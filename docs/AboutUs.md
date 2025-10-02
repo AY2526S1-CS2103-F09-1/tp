@@ -19,15 +19,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Documentation, Testing, Logic 
 
-### Lim Kian Ian
+### Jane Doe
 
-<img src="docs/images/boredfurry.png" width="200px">
+<img src="images/johndoe.png" width="200px">
 
-[[github](https://github.com/BoredFurry)]
+[[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Integration, Scheduling and Tracking
-* Responsibilities: Model, Storage
+* Role: Team Lead
+* Responsibilities: UI
 
 ### Johnny Doe
 
