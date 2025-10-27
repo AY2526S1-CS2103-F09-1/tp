@@ -104,7 +104,7 @@ public class AddressBookParser {
             return new ShowStudentCommandParser().parse(arguments);
 
         case ListUnmatchPersonsCommand.COMMAND_WORD:
-            return new ListUnmatchPersonsCommand();
+            return new ListUnmatchPersonsCommandParser().parse(arguments);
 
         case UnmatchCommand.COMMAND_WORD:
             return new UnmatchCommandParser().parse(arguments);
