@@ -80,10 +80,8 @@ public class MatchCommandTest {
                 .buildStudent();
         model.addPerson(mentor);
         model.addPerson(student);
-        
         Index mentorIndex = Index.fromOneBased(model.getFilteredPersonList().size() - 1);
         Index studentIndex = Index.fromOneBased(model.getFilteredPersonList().size());
-        
         MatchCommand matchCommand = new MatchCommand(mentorIndex, studentIndex);
         String expectedMessage = "Mentor: " + mentor.getName() + "\nmatched to\nStudent: " + student.getName();
 
@@ -107,10 +105,8 @@ public class MatchCommandTest {
                 .buildStudent();
         model.addPerson(mentor);
         model.addPerson(student);
-        
         Index mentorIndex = Index.fromOneBased(model.getFilteredPersonList().size() - 1);
         Index studentIndex = Index.fromOneBased(model.getFilteredPersonList().size());
-        
         MatchCommand matchCommand = new MatchCommand(mentorIndex, studentIndex);
 
         assertCommandFailure(matchCommand, model, Messages.MESSAGE_MATCH_BETWEEN_DIFFERENT_CENTRES);
