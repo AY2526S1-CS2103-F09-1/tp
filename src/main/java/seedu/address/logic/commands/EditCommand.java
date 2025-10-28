@@ -72,8 +72,6 @@ public class EditCommand extends Command {
         this.index = index;
         this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
     }
-
-    @SuppressWarnings("checkstyle:SingleSpaceSeparator")
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
