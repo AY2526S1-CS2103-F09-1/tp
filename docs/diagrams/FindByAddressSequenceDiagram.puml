@@ -1,0 +1,85 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+!include style.puml
+skinparam ArrowFontStyle plain
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":FindByAddressCommandParser" as FindByAddressCommandParser LOGIC_COLOR
+participant "d:FindByAddressCommand" as FindByAddressCommand LOGIC_COLOR
+participant "r:CommandResult" as CommandResult LOGIC_COLOR
+participant ":Messages" as Messages LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "m:Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("findbyaddress address")
+activate LogicManager
+
+LogicManager -> AddressBookParser : parseCommand("findbyaddress address")
+activate AddressBookParser
+
+create FindByAddressCommandParser
+AddressBookParser -> FindByAddressCommandParser
+activate FindByAddressCommandParser
+
+FindByAddressCommandParser --> AddressBookParser
+deactivate FindByAddressCommandParser
+
+AddressBookParser -> FindByAddressCommandParser : parse("address")
+activate FindByAddressCommandParser
+
+create FindByAddressCommand
+FindByAddressCommandParser -> FindByAddressCommand
+activate FindByAddressCommand
+
+FindByAddressCommand --> FindByAddressCommandParser :
+deactivate FindByAddressCommand
+
+FindByAddressCommandParser --> AddressBookParser : d
+deactivate FindByAddressCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+FindByAddressCommandParser -[hidden]-> AddressBookParser
+destroy FindByAddressCommandParser
+
+AddressBookParser --> LogicManager : d
+deactivate AddressBookParser
+
+LogicManager -> FindByAddressCommand : execute(m)
+activate FindByAddressCommand
+
+FindByAddressCommand -> Model : updateFilteredPersonsList(predicate)
+activate Model
+
+Model --> FindByAddressCommand
+
+
+FindByAddressCommand -> Model : getFilteredPersonsList()
+Model --> FindByAddressCommand: filteredPersonsList
+deactivate Model
+
+FindByAddressCommand -> FindByAddressCommand : size()
+activate FindByAddressCommand
+FindByAddressCommand --> FindByAddressCommand : s
+deactivate FindByAddressCommand
+
+FindByAddressCommand -> Messages :
+activate Messages
+Messages --> FindByAddressCommand : MESSAGE_PERSONS_LIST_OVERVIEW
+deactivate Messages
+
+create CommandResult
+FindByAddressCommand -> CommandResult : CommandResult(MESSAGE_PERSONS_LIST_OVERVIEW, s)
+activate CommandResult
+CommandResult --> FindByAddressCommand
+deactivate CommandResult
+
+FindByAddressCommand --> LogicManager : r
+deactivate FindByAddressCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
