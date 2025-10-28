@@ -127,8 +127,13 @@ public class EditCommand extends Command {
                     updatedTags, updatedCentre);
             break;
         case "Student":
-            person = new Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark,
+            Student newStudent = new Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark,
                     updatedTags, updatedCentre);
+            Mentor mentor = ((Student) personToEdit).getMentor();
+            if (mentor != null) {
+                newStudent.setMentor(mentor);
+            }
+            person = newStudent;
             break;
         default:
             person = new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedTags);
