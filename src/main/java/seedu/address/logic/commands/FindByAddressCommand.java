@@ -9,7 +9,7 @@ import seedu.address.model.person.AddressContainsKeywordsPredicate;
 
 /**
  * Finds and lists all persons in address book whose address contains any of the argument keywords.
- * Keyword matching is case insensitive.
+ * Keyword matching is case-insensitive.
  */
 public class FindByAddressCommand extends Command {
 
