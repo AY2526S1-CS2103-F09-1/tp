@@ -21,71 +21,84 @@ import seedu.address.testutil.PersonBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
- * {@code MatchCommand}.
+ * {@code UnmatchCommand}.
  */
-public class MatchCommandTest {
+public class UnmatchCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_validIndexValidRoles_success() {
+    public void execute_validIndexMatchedPair_success() {
         Mentor mentor = new PersonBuilder().buildMentor();
         Student student = new PersonBuilder().withName("Alice Student").buildStudent();
+        student.setMentor(mentor); // Match them first
         model.addPerson(mentor);
         model.addPerson(student);
         Index mentorIndex = Index.fromOneBased(model.getFilteredPersonList().size() - 1);
         Index studentIndex = Index.fromOneBased(model.getFilteredPersonList().size());
-
-        MatchCommand matchCommand = new MatchCommand(mentorIndex, studentIndex);
-        String expectedMessage = "Mentor: " + mentor.getName() + "\nmatched to\nStudent: " + student.getName();
-
+        UnmatchCommand unmatchCommand = new UnmatchCommand(mentorIndex, studentIndex);
+        String expectedMessage = "Mentor: " + mentor.getName() + "\n and \nStudent: "
+                + student.getName() + "\nunmatched";
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         Student expectedStudent = student;
-        expectedStudent.setMentor(mentor);
         expectedModel.setPerson(student, expectedStudent);
 
-        assertCommandSuccess(matchCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(unmatchCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        MatchCommand matchCommand = new MatchCommand(outOfBoundIndex, INDEX_FIRST_PERSON);
+        UnmatchCommand unmatchCommand = new UnmatchCommand(outOfBoundIndex, INDEX_FIRST_PERSON);
 
-        assertCommandFailure(matchCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(unmatchCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     }
 
     @Test
-    public void execute_invalidRolesMatch_throwsCommandException() {
+    public void execute_invalidRolesUnmatch_throwsCommandException() {
         Student student1 = new PersonBuilder().buildStudent();
         Student student2 = new PersonBuilder().withName("Bob Student").buildStudent();
         model.addPerson(student1);
         model.addPerson(student2);
         Index firstIndex = Index.fromOneBased(model.getFilteredPersonList().size() - 1);
         Index secondIndex = Index.fromOneBased(model.getFilteredPersonList().size());
-        MatchCommand matchCommand = new MatchCommand(firstIndex, secondIndex);
+        UnmatchCommand unmatchCommand = new UnmatchCommand(firstIndex, secondIndex);
 
-        assertCommandFailure(matchCommand, model, Messages.MESSAGE_INVALID_ROLES_MATCHED);
+        assertCommandFailure(unmatchCommand, model, Messages.MESSAGE_INVALID_ROLES_UNMATCHED);
+    }
+
+    @Test
+    public void execute_unmatchUnmatchedPair_throwsCommandException() {
+        Mentor mentor = new PersonBuilder().buildMentor();
+        Student student = new PersonBuilder().withName("Alice Student").buildStudent();
+        // Not matching them first
+        model.addPerson(mentor);
+        model.addPerson(student);
+        Index mentorIndex = Index.fromOneBased(model.getFilteredPersonList().size() - 1);
+        Index studentIndex = Index.fromOneBased(model.getFilteredPersonList().size());
+        UnmatchCommand unmatchCommand = new UnmatchCommand(mentorIndex, studentIndex);
+
+        assertCommandFailure(unmatchCommand, model, Messages.MESSAGE_UNMATCH_BETWEEN_UNMATCHED_PERSONS);
     }
 
     @Test
     public void equals() {
-        MatchCommand matchFirstCommand = new MatchCommand(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON);
-        MatchCommand matchSecondCommand = new MatchCommand(INDEX_SECOND_PERSON, INDEX_FIRST_PERSON);
+        UnmatchCommand unmatchFirstCommand = new UnmatchCommand(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON);
+        UnmatchCommand unmatchSecondCommand = new UnmatchCommand(INDEX_SECOND_PERSON, INDEX_FIRST_PERSON);
 
         // same object -> returns true
-        assertTrue(matchFirstCommand.equals(matchFirstCommand));
+        assertTrue(unmatchFirstCommand.equals(unmatchFirstCommand));
 
         // same values -> returns true
-        MatchCommand matchFirstCommandCopy = new MatchCommand(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON);
-        assertTrue(matchFirstCommand.equals(matchFirstCommandCopy));
+        UnmatchCommand unmatchFirstCommandCopy = new UnmatchCommand(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON);
+        assertTrue(unmatchFirstCommand.equals(unmatchFirstCommandCopy));
 
         // different types -> returns false
-        assertFalse(matchFirstCommand.equals(1));
+        assertFalse(unmatchFirstCommand.equals(1));
 
         // null -> returns false
-        assertFalse(matchFirstCommand.equals(null));
+        assertFalse(unmatchFirstCommand.equals(null));
 
         // different mentor/student order -> returns false
-        assertFalse(matchFirstCommand.equals(matchSecondCommand));
+        assertFalse(unmatchFirstCommand.equals(unmatchSecondCommand));
     }
 }
