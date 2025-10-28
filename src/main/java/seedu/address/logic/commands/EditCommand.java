@@ -73,6 +73,7 @@ public class EditCommand extends Command {
         this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
     }
 
+    @SuppressWarnings("checkstyle:SingleSpaceSeparator")
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -89,6 +90,15 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
+        if (editedPerson instanceof Mentor editedMentor) {
+            Centre centre = editedMentor.getCentre();
+            for (Person person : lastShownList) {
+                if (person instanceof Student student && student.getMentor() != null
+                        && student.getMentor().equals(personToEdit) && !student.getCentre().equals(centre)) {
+                    student.removeMentor();
+                }
+            }
+        }
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
@@ -130,7 +140,7 @@ public class EditCommand extends Command {
             Student newStudent = new Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark,
                     updatedTags, updatedCentre);
             Mentor mentor = ((Student) personToEdit).getMentor();
-            if (mentor != null) {
+            if (mentor != null && mentor.getCentre().equals(updatedCentre)) {
                 newStudent.setMentor(mentor);
             }
             person = newStudent;
