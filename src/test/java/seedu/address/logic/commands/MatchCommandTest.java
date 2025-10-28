@@ -68,6 +68,55 @@ public class MatchCommandTest {
     }
 
     @Test
+    public void execute_matchingSameCentre_success() {
+        String testCentre = "Test Centre A";
+        Mentor mentor = new PersonBuilder()
+                .withName("Bob Mentor")
+                .withCentre(testCentre)
+                .buildMentor();
+        Student student = new PersonBuilder()
+                .withName("Alice Student")
+                .withCentre(testCentre)
+                .buildStudent();
+        model.addPerson(mentor);
+        model.addPerson(student);
+        
+        Index mentorIndex = Index.fromOneBased(model.getFilteredPersonList().size() - 1);
+        Index studentIndex = Index.fromOneBased(model.getFilteredPersonList().size());
+        
+        MatchCommand matchCommand = new MatchCommand(mentorIndex, studentIndex);
+        String expectedMessage = "Mentor: " + mentor.getName() + "\nmatched to\nStudent: " + student.getName();
+
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Student expectedStudent = student;
+        expectedStudent.setMentor(mentor);
+        expectedModel.setPerson(student, expectedStudent);
+
+        assertCommandSuccess(matchCommand, model, expectedMessage, expectedModel);
+    }
+
+    @Test
+    public void execute_matchingDifferentCentre_throwsCommandException() {
+        Mentor mentor = new PersonBuilder()
+                .withName("Bob Mentor")
+                .withCentre("Centre A")
+                .buildMentor();
+        Student student = new PersonBuilder()
+                .withName("Alice Student")
+                .withCentre("Centre B")
+                .buildStudent();
+        model.addPerson(mentor);
+        model.addPerson(student);
+        
+        Index mentorIndex = Index.fromOneBased(model.getFilteredPersonList().size() - 1);
+        Index studentIndex = Index.fromOneBased(model.getFilteredPersonList().size());
+        
+        MatchCommand matchCommand = new MatchCommand(mentorIndex, studentIndex);
+
+        assertCommandFailure(matchCommand, model, Messages.MESSAGE_MATCH_BETWEEN_DIFFERENT_CENTRES);
+    }
+
+    @Test
     public void equals() {
         MatchCommand matchFirstCommand = new MatchCommand(INDEX_FIRST_PERSON, INDEX_SECOND_PERSON);
         MatchCommand matchSecondCommand = new MatchCommand(INDEX_SECOND_PERSON, INDEX_FIRST_PERSON);

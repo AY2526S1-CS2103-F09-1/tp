@@ -43,9 +43,13 @@ public class MatchCommand extends Command {
         Person studentToMatch = lastShownList.get(student.getZeroBased());
 
         if (mentorToMatch instanceof Mentor mentorObj && studentToMatch instanceof Student studentObj) {
-            studentObj.setMentor(mentorObj);
-            model.setPerson(studentToMatch, studentObj);
-            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+            if (mentorObj.getCentre().equals(studentObj.getCentre())) {
+                studentObj.setMentor(mentorObj);
+                model.setPerson(studentToMatch, studentObj);
+                model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+            } else {
+                throw new CommandException(Messages.MESSAGE_MATCH_BETWEEN_DIFFERENT_CENTRES);
+            }
         } else {
             throw new CommandException(Messages.MESSAGE_INVALID_ROLES_MATCHED);
         }

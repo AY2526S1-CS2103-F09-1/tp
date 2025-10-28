@@ -136,6 +136,14 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Centre} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withCentre(String centre) {
+        this.centre = new Centre(centre);
+        return this;
+    }
+
     public Person build() {
         return new Person(name, phone, email, address, remark, tags);
     }
