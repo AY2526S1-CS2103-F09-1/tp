@@ -25,8 +25,10 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_REMARK = "";
+    public static final String DEFAULT_ROLE = "Person";
     public static final String STUDENT_ROLE = "Student";
     public static final String MENTOR_ROLE = "Mentor";
+    public static final Mentor DEFAULT_ASSIGNED_MENTOR = null;
     public static final String DEFAULT_CENTRE = "Centre Unassigned";
 
     private Name name;
@@ -35,6 +37,8 @@ public class PersonBuilder {
     private Address address;
     private Remark remark;
     private Set<Tag> tags;
+    private String role;
+    private Mentor mentor;
     private Centre centre;
 
     /**
@@ -47,6 +51,8 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         remark = new Remark(DEFAULT_REMARK);
         tags = new HashSet<>();
+        role = DEFAULT_ROLE;
+        mentor = DEFAULT_ASSIGNED_MENTOR;
         centre = new Centre(DEFAULT_CENTRE);
     }
 
@@ -59,6 +65,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         remark = personToCopy.getRemark();
+        role = personToCopy.getRole();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -72,6 +79,8 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         remark = personToCopy.getRemark();
         tags = new HashSet<>(personToCopy.getTags());
+        role = personToCopy.getRole();
+        mentor = personToCopy.getMentor();
         centre = personToCopy.getCentre();
     }
 
@@ -85,6 +94,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         remark = personToCopy.getRemark();
         tags = new HashSet<>(personToCopy.getTags());
+        role = personToCopy.getRole();
         centre = personToCopy.getCentre();
     }
 
@@ -133,6 +143,14 @@ public class PersonBuilder {
      */
     public PersonBuilder withRemark(String remark) {
         this.remark = new Remark(remark);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Remark} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withAssignedMentor(Mentor mentor) {
+        this.mentor = mentor;
         return this;
     }
 
