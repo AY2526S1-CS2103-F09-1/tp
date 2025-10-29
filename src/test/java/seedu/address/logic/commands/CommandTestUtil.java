@@ -66,8 +66,8 @@ public class CommandTestUtil {
     public static final EditCommand.EditPersonDescriptor DESC_AMY;
     public static final EditCommand.EditPersonDescriptor DESC_BOB;
 
-    public static final String ROLE_STUDENT = " " + PREFIX_ROLE + "STUDENT";
-    public static final String ROLE_MENTOR = " " + PREFIX_ROLE + "MENTOR";
+    public static final String ROLE_STUDENT = " " + PREFIX_ROLE + "Student";
+    public static final String ROLE_MENTOR = " " + PREFIX_ROLE + "Mentor";
 
     static {
         DESC_AMY = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
