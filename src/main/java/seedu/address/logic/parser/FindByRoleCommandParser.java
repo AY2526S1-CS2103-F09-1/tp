@@ -36,8 +36,8 @@ public class FindByRoleCommandParser implements Parser<FindByRoleCommand> {
 
         String role = roleKeywords[0].toUpperCase();
 
-        if (!role.equals("PERSON") && !role.equals("MENTOR") && !role.equals("STUDENT")) {
-            throw new ParseException("Role must be PERSON, MENTOR, or STUDENT.");
+        if (!role.equals("Mentor") && !role.equals("Student")) {
+            throw new ParseException("Role must be \"Mentor\" or \"Student\".");
         }
 
         return new FindByRoleCommand(new RoleContainsKeywordsPredicate(Arrays.asList(roleKeywords)));
