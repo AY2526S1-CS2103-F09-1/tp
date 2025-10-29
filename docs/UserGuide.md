@@ -219,6 +219,8 @@ _Details coming soon ..._
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+3. **It is currently not possible to add two different people with the same name.** If you happen to have two people with the same name, we recommend you include a numerical suffix to differentiate them (e.g. `n/Lim Jun Jie 1` and `n/Lim Jun Jie 2`). If you need to obtain their information later on, you can use `findbyname Lim Jun Jie` to list all the different people with the same name and differentiate them using the rest of their details.
+4. **It is currently not possible to include special characters in people's names**. Names can only contain alphanumeric characters and spaces. If someone's name contains other characters (e.g. Lim Jun-Jie, Bala s/o Krishnan), we suggest that you omit the part of their name containing the special character at your own discretion (e.g. Lim Jun Jie, Bala Krishnan) when adding them.
 
 --------------------------------------------------------------------------------------------------------------------
 
