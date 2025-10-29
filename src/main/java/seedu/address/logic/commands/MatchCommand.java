@@ -43,6 +43,10 @@ public class MatchCommand extends Command {
         Person studentToMatch = lastShownList.get(student.getZeroBased());
 
         if (mentorToMatch instanceof Mentor mentorObj && studentToMatch instanceof Student studentObj) {
+            Mentor curMentor = studentObj.getMentor();
+            if (curMentor != null && curMentor.equals(mentorObj)) {
+                throw new CommandException(Messages.MESSAGE_PERSONS_ALREADY_MATCHED);
+            }
             if (mentorObj.getCentre().equals(studentObj.getCentre())) {
                 studentObj.setMentor(mentorObj);
                 model.setPerson(studentToMatch, studentObj);
