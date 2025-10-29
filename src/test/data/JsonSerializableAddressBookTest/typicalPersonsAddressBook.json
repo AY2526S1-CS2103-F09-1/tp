@@ -6,7 +6,7 @@
     "email" : "alice@example.com",
     "address" : "123, Jurong West Ave 6, #08-111",
     "remark" : "",
-    "role" : "MENTOR",
+    "role" : "Mentor",
     "centre" : "Centre Unassigned",
     "mentor" : "",
     "tags" : [ "friends" ]
@@ -16,7 +16,7 @@
     "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
     "remark" : "",
-    "role" : "STUDENT",
+    "role" : "Student",
     "centre" : "Nan Hua High School",
     "mentor" : "Alice Pauline",
     "tags" : [ "owesMoney", "friends" ]
@@ -26,7 +26,7 @@
     "email" : "heinz@example.com",
     "address" : "wall street",
     "remark" : "",
-    "role" : "MENTOR",
+    "role" : "Mentor",
     "centre" : "New Town Primary School",
     "mentor" : "",
     "tags" : [ ]
@@ -36,7 +36,7 @@
     "email" : "cornelia@example.com",
     "address" : "10th street",
     "remark" : "",
-    "role" : "MENTOR",
+    "role" : "Mentor",
     "centre" : "New Town Primary School",
     "mentor" : "",
     "tags" : [ "friends" ]
@@ -46,7 +46,7 @@
     "email" : "werner@example.com",
     "address" : "michegan ave",
     "remark" : "",
-    "role" : "STUDENT",
+    "role" : "Student",
     "centre" : "Jurong Primary School",
     "mentor" : "",
     "tags" : [ ]
@@ -56,7 +56,7 @@
     "email" : "lydia@example.com",
     "address" : "little tokyo",
     "remark" : "",
-    "role" : "STUDENT",
+    "role" : "Student",
     "centre" : "Punggol Primary School",
     "mentor" : "",
     "tags" : [ ]
@@ -66,7 +66,7 @@
     "email" : "anna@example.com",
     "address" : "4th street",
     "remark" : "",
-    "role" : "MENTOR",
+    "role" : "Mentor",
     "centre" : "Pioneer Primary School",
     "mentor" : "",
     "tags" : [ ]

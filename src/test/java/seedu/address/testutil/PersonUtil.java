@@ -39,9 +39,9 @@ public class PersonUtil {
         sb.append(PREFIX_ADDRESS + person.getAddress().value + " ");
         String role = "";
         if (person instanceof Student) {
-            role = "STUDENT";
+            role = "Student";
         } else if (person instanceof Mentor) {
-            role = "MENTOR";
+            role = "Mentor";
         } else {
             throw new AssertionError("Unrecognised person type");
         }

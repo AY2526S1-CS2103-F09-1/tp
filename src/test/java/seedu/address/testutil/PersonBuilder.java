@@ -25,8 +25,8 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_REMARK = "";
-    public static final String STUDENT_ROLE = "STUDENT";
-    public static final String MENTOR_ROLE = "MENTOR";
+    public static final String STUDENT_ROLE = "Student";
+    public static final String MENTOR_ROLE = "Mentor";
     public static final String DEFAULT_CENTRE = "Centre Unassigned";
 
     private Name name;

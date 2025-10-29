@@ -23,7 +23,7 @@ public class JsonAdaptedPersonTest {
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
-    private static final String INVALID_ROLE = "Student";
+    private static final String INVALID_ROLE = "STUDENT";
 
     private static final String VALID_NAME = BENSON.getName().toString();
     private static final String VALID_PHONE = BENSON.getPhone().toString();
@@ -31,7 +31,7 @@ public class JsonAdaptedPersonTest {
     private static final String VALID_ADDRESS = BENSON.getAddress().toString();
     private static final String VALID_REMARK = BENSON.getRemark().toString();
     private static final String VALID_CENTRE = "New Town Secondary School";
-    private static final String VALID_ROLE = "MENTOR";
+    private static final String VALID_ROLE = "Mentor";
     private static final String VALID_MENTOR = "John Doe";
     private static final String NO_MENTOR = "";
     private static final List<JsonAdaptedTag> VALID_TAGS = BENSON.getTags().stream()
