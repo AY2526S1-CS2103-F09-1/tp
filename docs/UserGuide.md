@@ -93,6 +93,23 @@ Shows a list of all persons in the address book.
 
 Format: `list`
 
+### Listing all unmatched persons : `listunmatched`
+
+Shows a list of all Students and Mentors who have not been matched to a Mentor or Student respectively
+
+Format: `listunmatched KEYWORD`
+
+* The search is case-insensitive. e.g `Bedok` will match `bedok`
+* The function will find matches that fit the entire KEYWORD given. It will not match substrings.
+
+Examples:
+* `listunmatched Bedok` will return all Students and Mentors that have `Bedok` in the Centre field.
+  * Eg: `Bedok Place`, `Bedok Centre`, `Bedok Tuition` are all valid Centre locations
+  ![result for 'Find Bedok']()
+* `listunmatched Bedok Centre` will return students and Mentors that have `Bedok Centre` in the Centre field.
+  * Eg: `Bedok Place` and `Bedok Tuition` are no longer valid. But `Bedok Centre` and `Bedok Centre Tuition` are now valid.
+    ![result for 'find Bedok Place'](images/findAlexDavidResult.png)
+
 ### Editing a person : `edit`
 
 Edits an existing person in the address book.
@@ -115,6 +132,24 @@ Examples:
 Finds persons whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
+
+* The search is case-insensitive. e.g `hans` will match `Hans`
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* Only the name is searched.
+* Only full words will be matched e.g. `Han` will not match `Hans`
+* Persons matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+
+Examples:
+* `find John` returns `john` and `John Doe`
+* `find alex david` returns `Alex Yeoh`, `David Li`<br>
+  ![result for 'find alex david'](images/findAlexDavidResult.png)
+
+### Locating persons by address : `findbyaddress`
+
+Finds persons whose address contains the given keywords
+
+Format: `findbyaddress KEYWORDS`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
