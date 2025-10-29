@@ -24,7 +24,7 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
 
-    public static final String[] VALID_ROLES = new String[]{"Person", "Mentor", "Student"};
+    public static final String[] VALID_ROLES = new String[]{"Mentor", "Student"};
 
     public static final String MESSAGE_INVALID_ROLE =
             "Roles should only contain alphanumeric characters and spaces, and it should not be blank. "
