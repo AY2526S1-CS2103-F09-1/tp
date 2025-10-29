@@ -40,7 +40,6 @@ public class MatchCommandTest {
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         Student expectedStudent = student;
-        expectedStudent.setMentor(mentor);
         expectedModel.setPerson(student, expectedStudent);
 
         assertCommandSuccess(matchCommand, model, expectedMessage, expectedModel);
@@ -87,7 +86,6 @@ public class MatchCommandTest {
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         Student expectedStudent = student;
-        expectedStudent.setMentor(mentor);
         expectedModel.setPerson(student, expectedStudent);
 
         assertCommandSuccess(matchCommand, model, expectedMessage, expectedModel);
