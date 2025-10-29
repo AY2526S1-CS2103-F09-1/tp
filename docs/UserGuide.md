@@ -28,7 +28,7 @@ Mentorface is a **desktop app for managing personal details of mentors and stude
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/STUDENT` : Adds a student named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Student` : Adds a student named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -77,7 +77,7 @@ Format: `help`
 
 Adds a person to the address book. 
 
-A person **must have a role** that is either student or mentor. This is specified using the parameter `r/` as either `r/STUDENT` or `r/MENTOR` (all capitalized).
+A person **must have a role** that is either student or mentor. This is specified using the parameter `r/` as either `r/Student` or `r/Mentor`.
 
 A person can also have a centre assigned when added. This is specified using the parameter `c/`. If no centre is specified, the centre will take on the default value `Centre Unassigned`.
 
@@ -89,7 +89,7 @@ A person can have any number of tags (including 0)
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/MENTOR`
-* `add n/Betsy Crowe t/Friday e/betsycrowe@example.com c/New Town Secondary School a/Blk 69 Newgate Road #4-20 p/94248390 r/STUDENT`
+* `add n/Betsy Crowe t/Friday e/betsycrowe@example.com c/New Town Secondary School a/Blk 69 Newgate Road #4-20 p/94248390 r/Student`
 
 ### Listing all persons : `list`
 
@@ -230,6 +230,14 @@ Action | Format, Examples
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find By Address** | `findbyaddress PART_OF_ADDRESS`<br> e.g., `findbyaddress Clementi`
+**Find By Centre** | `findbycentre CENTRE_NAME` <br> e.g., `findbycentre Nan Hua High School`
+**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find By Role** | `findbyrole ROLE` <br> e.g., `findbyrole Student`
 **List** | `list`
+**List Unmatched** | `listunmatched`
+**Match** | `match m/INDEX s/INDEX` <br> e.g., `match m/2 s/3`
+**Remark** | `remark INDEX rm/REMARK` <br> e.g., `remark 3 rm/only free on Friday`
+**Show Students** | `showstudent INDEX` <br> e.g., `showstudent 3`
+**Unmatch** | `unmatch m/INDEX s/INDEX` <br> e.g., `unmatch m/2 s/3`
 **Help** | `help`
