@@ -165,16 +165,25 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Returns the {@code Person} object that we are building.
+     */
     public Person build() {
         return new Person(name, phone, email, address, remark, tags);
     }
 
+    /**
+     * Returns the {@code Student} object that we are building.
+     */
     public Student buildStudent() {
         Student createdStudent = new Student(name, phone, email, address, remark, tags, centre);
         createdStudent.setMentor(mentor);
         return createdStudent;
     }
 
+    /**
+     * Returns the {@code Mentor} object that we are building.
+     */
     public Mentor buildMentor() {
         return new Mentor(name, phone, email, address, remark, tags, centre);
     }
