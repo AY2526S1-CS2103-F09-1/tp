@@ -1,6 +1,8 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MENTOR;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENT;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -14,10 +16,17 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Student;
 
 /**
- * Matches a tutor and tutee.
+ * Matches a mentor and student.
  */
 public class UnmatchCommand extends Command {
     public static final String COMMAND_WORD = "unmatch";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Unmatches a mentor to a student\n"
+            + "Parameters: "
+            + PREFIX_MENTOR + "MENTOR INDEX "
+            + PREFIX_STUDENT + "STUDENT INDEX\n"
+            + "Example : unmatch m/1 s/2";
+
 
     private final Index mentor;
     private final Index student;
@@ -55,7 +64,7 @@ public class UnmatchCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_ROLES_UNMATCHED);
         }
 
-        return new CommandResult("Mentor: " + mentorToMatch.getName() + "\n and \nStudent: "
+        return new CommandResult("Mentor: " + mentorToMatch.getName() + "\nand \nStudent: "
                 + studentToMatch.getName() + "\nunmatched");
     }
 
