@@ -24,6 +24,8 @@ public class Messages {
             "Unmatching between people of these roles is not allowed!";
     public static final String MESSAGE_UNMATCH_BETWEEN_UNMATCHED_PERSONS =
             "Unable to unmatch, these two people are not matched to begin with!";
+    public static final String MESSAGE_MATCH_BETWEEN_DIFFERENT_CENTRES =
+            "Matches between a mentor and student in different centres are not allowed!";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
