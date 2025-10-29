@@ -96,6 +96,7 @@ public class EditCommand extends Command {
                     boolean isCentreChanged = !student.getCentre().equals(centre);
                     if (isMatched && isCentreChanged) {
                         student.removeMentor();
+                        model.setPerson(student, student);
                     }
                 }
             }

@@ -44,9 +44,11 @@ public class DeleteCommand extends Command {
 
         Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
         if (personToDelete instanceof Mentor mentor) {
-            for (Person person : model.getFilteredPersonList()) {
-                if (person instanceof Student student && student.getMentor().equals(mentor)) {
+            for (Person person : lastShownList) {
+                if (person instanceof Student student && student.getMentor() != null
+                        && student.getMentor().equals(mentor)) {
                     student.removeMentor();
+                    model.setPerson(student, student);
                 }
             }
         }
