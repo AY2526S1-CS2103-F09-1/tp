@@ -91,9 +91,12 @@ public class EditCommand extends Command {
         if (editedPerson instanceof Mentor editedMentor) {
             Centre centre = editedMentor.getCentre();
             for (Person person : lastShownList) {
-                if (person instanceof Student student && student.getMentor() != null
-                        && student.getMentor().equals(personToEdit) && !student.getCentre().equals(centre)) {
-                    student.removeMentor();
+                if (person instanceof Student student && student.getMentor() != null) {
+                    boolean isMatched = student.getMentor().equals(personToEdit);
+                    boolean isCentreChanged = !student.getCentre().equals(centre);
+                    if (isMatched && isCentreChanged) {
+                        student.removeMentor();
+                    }
                 }
             }
         }
