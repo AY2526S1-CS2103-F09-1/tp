@@ -3,6 +3,8 @@ package seedu.address.ui;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -17,6 +19,11 @@ import seedu.address.model.person.Student;
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
+
+    private static final String STUDENT_AVATAR_PATH = "/images/student_avatar.png";
+    private static final String MENTOR_AVATAR_PATH = "/images/mentor_avatar.png";
+    private static final String DEFAULT_AVATAR_PATH = "/images/default_profile.png";
+
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -50,6 +57,8 @@ public class PersonCard extends UiPart<Region> {
     private Label remark;
     @FXML
     private Label mentor;
+    @FXML
+    private ImageView profileImage;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -67,11 +76,14 @@ public class PersonCard extends UiPart<Region> {
         role.getChildren().add(roleLabel);
         if (person instanceof Student) {
             centre.setText("Centre: " + ((Student) person).getCentre().toString());
+            setAvatar(STUDENT_AVATAR_PATH);
         } else if (person instanceof Mentor) {
             centre.setText("Centre: " + ((Mentor) person).getCentre().toString());
+            setAvatar(MENTOR_AVATAR_PATH);
         } else {
             centre.setManaged(false);
             centre.setVisible(false);
+            setAvatar(DEFAULT_AVATAR_PATH);
         }
         String mentorToMatch = "";
         if (person instanceof Student student) {
@@ -86,5 +98,23 @@ public class PersonCard extends UiPart<Region> {
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+        }
+
+    /**
+     * Loads avatar image into the profile image view.
+     */
+    private void setAvatar(String path) {
+        try {
+            Image avatar = new Image(getClass().getResourceAsStream(path),
+                    128, 128, true, true);
+            profileImage.setImage(avatar);
+            profileImage.setFitWidth(128);
+            profileImage.setFitHeight(128);
+            profileImage.setPreserveRatio(true);
+            profileImage.setSmooth(true);
+        } catch (Exception e) {
+            profileImage.setImage(new Image(getClass().getResourceAsStream(DEFAULT_AVATAR_PATH),
+                    128, 128, true, true));
+        }
     }
 }
