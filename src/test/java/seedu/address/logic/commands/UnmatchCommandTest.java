@@ -36,7 +36,7 @@ public class UnmatchCommandTest {
         Index mentorIndex = Index.fromOneBased(model.getFilteredPersonList().size() - 1);
         Index studentIndex = Index.fromOneBased(model.getFilteredPersonList().size());
         UnmatchCommand unmatchCommand = new UnmatchCommand(mentorIndex, studentIndex);
-        String expectedMessage = "Mentor: " + mentor.getName() + "\n and \nStudent: "
+        String expectedMessage = "Mentor: " + mentor.getName() + "\nand \nStudent: "
                 + student.getName() + "\nunmatched";
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         Student expectedStudent = student;
