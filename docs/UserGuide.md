@@ -112,7 +112,7 @@ Examples:
 * `match m/1 s/2` matches the mentor at the first index and the student at the second index.
   ![result for 'find alex david'](images/matchJohnJaneResult.png)
 
-### Unmatching a mentor and a student: `umatch`
+### Unmatching a mentor and a student: `unmatch`
 
 * Unmatches a mentor and student from each other.
 
@@ -228,16 +228,16 @@ _Details coming soon ..._
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/ROLE [c/CENTRE] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 r/Student c/Punggol Primary School t/Monday`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [r/ROLE] [c/CENTRE] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find By Address** | `findbyaddress PART_OF_ADDRESS`<br> e.g., `findbyaddress Clementi`
 **Find By Centre** | `findbycentre CENTRE_NAME` <br> e.g., `findbycentre Nan Hua High School`
 **Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Find By Role** | `findbyrole ROLE` <br> e.g., `findbyrole Student`
 **List** | `list`
-**List Unmatched** | `listunmatched`
+**List Unmatched** | `listunmatched KEYWORD` <br> e.g., `listunmatched Punggol Primary School`
 **Match** | `match m/INDEX s/INDEX` <br> e.g., `match m/2 s/3`
 **Remark** | `remark INDEX rm/REMARK` <br> e.g., `remark 3 rm/only free on Friday`
 **Show Students** | `showstudent INDEX` <br> e.g., `showstudent 3`
