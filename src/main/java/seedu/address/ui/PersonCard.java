@@ -79,9 +79,17 @@ public class PersonCard extends UiPart<Region> {
             if (student.getMentor() != null) {
                 mentorToMatch += student.getMentor().getName().fullName;
             }
+            mentor.setText(mentorToMatch);
+        } else {
+            mentor.setManaged(false);
+            mentor.setVisible(false);
         }
-        mentor.setText(mentorToMatch);
-        remark.setText("Remark: " + person.getRemark().value);
+        if (person.getRemark().value.equals("") || person.getRemark() == null) {
+            remark.setManaged(false);
+            remark.setVisible(false);
+        } else {
+            remark.setText("Remarks: " + person.getRemark().value);
+        }
 
         person.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
