@@ -27,7 +27,7 @@ public class MatchCommandParser implements Parser<MatchCommand> {
 
         if (!arePrefixesPresent(argMultimap, PREFIX_MENTOR, PREFIX_STUDENT)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, MatchCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_MENTOR, PREFIX_STUDENT);
