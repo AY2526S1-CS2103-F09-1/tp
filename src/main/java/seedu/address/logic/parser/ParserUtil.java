@@ -28,7 +28,7 @@ public class ParserUtil {
 
     public static final String MESSAGE_INVALID_ROLE =
             "Roles should only contain alphanumeric characters and spaces, and it should not be blank. "
-                    + "Valid roles consist of {\"Person\", \"Mentor\", \"Student\"}";
+                    + "Valid roles consist of \"Mentor\" and \"Student\"";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
