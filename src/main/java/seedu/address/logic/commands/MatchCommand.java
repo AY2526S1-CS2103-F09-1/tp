@@ -14,7 +14,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Student;
 
 /**
- * Matches a tutor and tutee.
+ * Matches a mentor and student.
  */
 public class MatchCommand extends Command {
     public static final String COMMAND_WORD = "match";
@@ -23,7 +23,7 @@ public class MatchCommand extends Command {
     private final Index student;
 
     /**
-     * @param mentor index of the tutor
+     * @param mentor index of the mentor
      * @param student index of the student
      */
     public MatchCommand(Index mentor, Index student) {
