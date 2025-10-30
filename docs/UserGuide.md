@@ -21,6 +21,7 @@ Mentorface is a **desktop app for managing personal details of mentors and stude
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+
    ![Ui](images/Ui.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
@@ -116,6 +117,7 @@ Format: `match m/MENTOR_INDEX s/STUDENT_INDEX`
 
 Examples:
 * `match m/1 s/2` matches the mentor at the first index and the student at the second index.
+
   ![result for 'match m/1 s/2'](images/matchRachelDavidResult.png)
 
 ### Unmatching a mentor and a student: `unmatch`
@@ -181,6 +183,7 @@ Format: `findbyname KEYWORD [MORE_KEYWORDS]...`
 Examples:
 * `findbyname John` returns `john` and `John Doe`
 * `findbyname alex david` returns `Alex Yeoh`, `David Li`<br>
+
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Locating persons by address: `findbyaddress`
@@ -195,9 +198,11 @@ Format: `findbyaddress KEYWORD`
 
 Examples:
 * `findbyaddress street` returns all `Students` and `Mentors` with `street` in the address field
+
   ![result for 'findbyaddress street'](images/findbyaddressStreetResult.png)
 
 * `findbyaddress gardens street` returns all `Students` and `Mentors` with `gardens street` in the address field <br>
+
   ![result for 'findbyaddress gardens street result'](images/findbyaddressGardenStreetResults.png)
 
 ### Locating persons by address: `findbycentre`
@@ -231,10 +236,12 @@ Finds persons by role.
 
 * `listunmatched Bedok` will return all unmatched `Students` and `Mentors` that have `Bedok` in the `Centre` field.
     * Eg: `Bedok Green Secondary School` and `Bedok Centre`are valid `Centre` locations
+
       ![result for 'listunmatched Bedok'](images/listunmatchedBedok.png)
 
 * `listunmatched Bedok Centre` will return all unmatched `Students` and `Mentors` that have `Bedok Centre` in the `Centre` field.
     * Eg: `Bedok Green Secondary School` is no longer valid. But `Bedok Centre` is still valid.
+    
       ![result for 'listunmatched Bedok Centre'](images/listunmatchedBedokCentre.png)
 
 ### Listing students of a mentor: `showstudent`
