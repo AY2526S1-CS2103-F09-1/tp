@@ -103,6 +103,34 @@ Clears all entries from the address book.
 
 Format: `clear`
 
+### Matching a mentor and a student: `match`
+
+Matches a mentor and student with each other.
+
+Format: `match m/MENTOR_INDEX s/STUDENT_INDEX`
+
+* Matches the mentor at `MENTOR_INDEX` with the student at `STUDENT_INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
+* A match can only be performed if the person at `MENTOR_INDEX` has the mentor role, and if the person at `STUDENT_INDEX` has the student role.
+* A match can only be performed between a mentor and student who are assigned to the same centre.
+* After matching, the student's mentor is displayed as a field in the app.
+
+Examples:
+* `match m/1 s/2` matches the mentor at the first index and the student at the second index.
+  ![result for 'match m/1 s/2'](images/matchRachelDavidResult.png)
+
+### Unmatching a mentor and a student: `unmatch`
+
+* Unmatches a mentor and student from each other.
+
+Format: `unmatch m/MENTOR_INDEX s/STUDENT_INDEX`
+
+* Unmatches the mentor at `MENTOR_INDEX` from the student at `STUDENT_INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
+* Unmatch can only be performed if the mentor and student were already matched previously.
+* After matching, the student's mentor is no longer displayed.
+
+Examples:
+* `unmatch m/1 s/2` unmatches the mentor at the first index and the student at the second index.
+
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
@@ -112,7 +140,7 @@ Format: `delete INDEX`
 * Deletes the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
-* **IMPORTANT NOTE**: If the person deleted is a mentor of a particular student, the mentor-student relationship between the two will be removed too.
+* **IMPORTANT NOTE**: If the person deleted is either a mentor of a particular student or a student of a particular mentor, the mentor-student relationship between the two will be removed too.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
@@ -137,39 +165,11 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Matching a mentor and a student: `match`
-
-* Matches a mentor and student with each other.
-
-Format: `match m/MENTOR_INDEX s/STUDENT_INDEX`
-
-* Matches the mentor at `MENTOR_INDEX` with the student at `STUDENT_INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
-* A match can only be performed if the person at `MENTOR_INDEX` has the mentor role, and if the person at `STUDENT_INDEX` has the student role.
-* A match can only be performed between a mentor and student who are assigned to the same centre.
-* After matching, the student's mentor is displayed as a field in the app.
-
-Examples:
-* `match m/1 s/2` matches the mentor at the first index and the student at the second index.
-  ![result for 'match m/1 s/2'](images/matchJohnJaneResult.png)
-
-### Unmatching a mentor and a student: `unmatch`
-
-* Unmatches a mentor and student from each other.
-
-Format: `unmatch m/MENTOR_INDEX s/STUDENT_INDEX`
-
-* Unmatches the mentor at `MENTOR_INDEX` from the student at `STUDENT_INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
-* Unmatch can only be performed if the mentor and student were already matched previously.
-* After matching, the student's mentor is no longer displayed.
-
-Examples:
-* `unmatch m/1 s/2` unmatches the mentor at the first index and the student at the second index.
-
 ### Locating persons by name: `findbyname`
 
 Finds persons whose names contain any of the given keywords.
 
-Format: `findbyname KEYWORD [MORE_KEYWORDS]`
+Format: `findbyname KEYWORD [MORE_KEYWORDS]...`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
@@ -191,22 +191,23 @@ Format: `findbyaddress KEYWORD`
 
 * The search is case-insensitive. e.g `Bedok` will match `bedok`
 * Only the address is searched.
-* The entire keyword will be tested against the address and only exact matches will be returned. findbyaddress will not return address that match any substring in KEYWORD
+* Entries with an address containing `KEYWORD` as a substring will be returned.
 
 Examples:
 * `findbyaddress street` returns all `Students` and `Mentors` with `street` in the address field
   ![result for 'findbyaddress street'](images/findbyaddressStreetResult.png)
+
 * `findbyaddress gardens street` returns all `Students` and `Mentors` with `gardens street` in the address field <br>
-  ![result for 'find alex david'](images/findbyaddressGardenStreetResults.png)
+  ![result for 'findbyaddress gardens street result'](images/findbyaddressGardenStreetResults.png)
 
 ### Locating persons by address: `findbycentre`
 
-Finds persons whose centre matches any of the keywords.
+Finds persons whose centre name contains the entire keyword.
 
   Format: `findbycentre KEYWORD`
 
-  * Similar to findbyaddress, keyword is  a substring of the result
-  * Contacts that do not have a centre assigned yet will have their field as `Centre Unassigned`. Thus, any substring of that, will list the said person
+  * Similar to `findbyaddress`, entries with a centre name containing `KEYWORD` as a substring will be returned.
+  * Contacts that do not have a centre assigned yet will have their field as `Centre Unassigned`. Thus, the said person will be listed if `KEYWORD` contains any substring of `"Centre Unassigned"`.
 
   Examples:
 
@@ -218,8 +219,8 @@ Finds persons by role.
 
   Format: `findbyrole ROLE`
 
-  * Currently, the system has only Mentor and Student specific roles, therefore the only roles that can be used is Mentor and Student
-  * Case-sensitive. `MENTOR` is not the same as `Mentor` and thus would not work
+  * Currently, the system only has the `Mentor` and `Student` roles. Therefore, these are the only roles that can be used.
+  * The search is case-sensitive. `findbyrole MENTOR` is not the same as `findbyrole Mentor`, which means that only the latter works. The former will result in an error message.
 
   Examples:
 
@@ -229,10 +230,11 @@ Finds persons by role.
 ### Listing unmatched students and mentors in a centre: `listunmatched`
 
 * `listunmatched Bedok` will return all unmatched `Students` and `Mentors` that have `Bedok` in the `Centre` field.
-    * Eg: `Bedok Place`, `Bedok Centre`, `Bedok Tuition` are all valid `Centre` locations
+    * Eg: `Bedok Green Secondary School` and `Bedok Centre`are valid `Centre` locations
       ![result for 'listunmatched Bedok'](images/listunmatchedBedok.png)
+
 * `listunmatched Bedok Centre` will return all unmatched `Students` and `Mentors` that have `Bedok Centre` in the `Centre` field.
-    * Eg: `Bedok Place` and `Bedok Tuition` are no longer valid. But `Bedok Centre` and `Bedok Centre Tuition` are now valid.
+    * Eg: `Bedok Green Secondary School` is no longer valid. But `Bedok Centre` is still valid.
       ![result for 'listunmatched Bedok Centre'](images/listunmatchedBedokCentre.png)
 
 ### Listing students of a mentor: `showstudent`
@@ -241,24 +243,24 @@ List all the students matched to the mentor of your choosing.
 
 Format: `showstudent INDEX`
 
-* Shows all the students of the mentor of the specified `INDEX`
-* Index must be a valid positive integer in the list
-* Index must be a Mentor. An error message will be shown if the role is not a mentor
-* After executing the command, enter the command `list` to use `showstudent` again on another Mentor
+* Shows all the students of the mentor of the specified `INDEX`.
+* Index must be a valid positive integer in the list.
+* Index must be a Mentor. An error message will be shown if the role is not a mentor.
+* After executing the command, enter the command `list` to use `showstudent` again on another Mentor.
 
 Examples:
 * `showstudent 3`
 
 ### Making a remark on a contact: `remark`
 
-Make a remark about the person.
+Adds a remark to a person.
 
 Format `remark INDEX rm/REMARK`
 
-* Index must be a valid positive integer in the list
-* Remarks are not edited through the `edit` command, if you want to edit a remark, reuse the `remark` command
-* Remarks are optional. If a person does not have any remark, it would not show in the address book
-* To delete a remark, use `remark INDEX /rm`
+* Index must be a valid positive integer in the list.
+* Remarks are not edited through the `edit` command, if you want to edit a remark, use the `remark` command again.
+* Remarks are optional. If a person does not have any remark, it does not show up as an attribute in the address book.
+* To delete a remark, use `remark INDEX /rm`.
 
 Examples:
 * `remark 3 rm/only free on Friday`
@@ -316,7 +318,7 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [r/ROLE] [c/CENTRE] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Match** | `match m/INDEX s/INDEX` <br> e.g., `match m/2 s/3`
 **Unmatch** | `unmatch m/INDEX s/INDEX` <br> e.g., `unmatch m/2 s/3`
-**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]...`<br> e.g., `find James Jake`
 **Find By Address** | `findbyaddress PART_OF_ADDRESS`<br> e.g., `findbyaddress Clementi`
 **Find By Centre** | `findbycentre PART_OF_CENTRE` <br> e.g., `findbycentre Nan Hua High School`
 **Find By Role** | `findbyrole ROLE` <br> e.g., `findbyrole Student`

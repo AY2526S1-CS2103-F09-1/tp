@@ -4,7 +4,7 @@
 
 * This is **an address book made for Peer Tutoring NGOs**.<br>
   Example usages include:
-  * Allow for easy tracking of tutors and tutees working with the NGO
+  * Allow for easy tracking of mentors and students working with the NGO
   * Enables NGOs to streamline their manpower allocation and management
 * The project is built off a desktop application (called _AddressBook_) created by [SE-EDU initiative](https://se-education.org) used for managing contact details.
   * It is **written in OOP fashion**. It has a **reasonably well-written** code base.
