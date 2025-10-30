@@ -1,0 +1,263 @@
+/* ===== Global Backgrounds ===== */
+.background {
+    /* Soft light blue background for the main window */
+    -fx-background-color: linear-gradient(to bottom, #E3F2FD, #FAFAFA);
+    background-color: #E3F2FD;
+}
+
+/* Slightly deeper blue tone for main container panels if needed */
+.main-pane, .root-pane {
+    -fx-background-color: #E8F0FE;
+}
+
+/* ===== Typography ===== */
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI", "Roboto", sans-serif;
+    -fx-text-fill: #212121;
+    -fx-opacity: 0.95;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #0D47A1; /* deep blue for headers */
+    -fx-opacity: 1;
+}
+
+/* ===== Menu Bar with Light Blue Accent ===== */
+.menu-bar {
+    -fx-background-color: linear-gradient(to bottom, #BBDEFB, #E3F2FD);
+    -fx-border-color: #90CAF9;
+    -fx-border-width: 0 0 1 0;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 6, 0, 0, 2);
+}
+
+.menu-bar .label {
+    -fx-font-size: 14pt;
+    -fx-font-family: "Segoe UI", "Roboto";
+    -fx-text-fill: #0D47A1;
+}
+
+/* ===== Status Bar with Blue Tint ===== */
+.status-bar {
+    -fx-background-color: linear-gradient(to top, #E3F2FD, #FAFAFA);
+    -fx-border-color: #BBDEFB;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 4 10 4 10;
+}
+
+.status-bar .label {
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: #1E88E5;
+}
+
+/* ===== Buttons ===== */
+.button {
+    -fx-font-family: "Segoe UI", "Roboto", sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #212121;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #90CAF9;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 6 16 6 16;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.2), 5, 0, 0, 1);
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.button:hover {
+    -fx-background-color: #E3F2FD;
+}
+
+.button:pressed {
+    -fx-background-color: #BBDEFB;
+}
+
+.button:default {
+    -fx-background-color: #2196F3;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.4), 8, 0, 0, 2);
+}
+
+.button:default:hover {
+    -fx-background-color: #1976D2;
+}
+
+/* ===== Cards & Panes ===== */
+.stack-pane, .pane-with-border {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 6;
+    -fx-border-color: #BBDEFB;
+    -fx-border-radius: 6;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.15), 5, 0, 0, 1);
+}
+
+/* ===== Table View ===== */
+.table-view {
+    -fx-background-color: #FFFFFF;
+    -fx-table-cell-border-color: #E3F2FD;
+    -fx-table-header-border-color: #E3F2FD;
+    -fx-padding: 5;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.1), 4, 0, 0, 1);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #E3F2FD;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 14pt;
+    -fx-text-fill: #0D47A1;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #BBDEFB;
+}
+
+/* ===== Text Fields ===== */
+.text-field {
+    -fx-font-family: "Poppins", "Roboto", "Segoe UI Variable", sans-serif;
+    -fx-font-size: 15pt;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #0D47A1; /* Dark blue text for a crisp, friendly look */
+    -fx-border-color: #90CAF9;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-radius: 0;
+    -fx-background-radius: 6;
+    -fx-padding: 10 6 10 6;
+    -fx-prompt-text-fill: #9E9E9E;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.text-field:hover {
+    -fx-background-color: #F5FBFF;
+}
+
+.text-field:focused {
+    -fx-border-color: #2196F3;
+    -fx-background-color: #FFFFFF;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.25), 8, 0, 0, 2);
+}
+
+/* ===== Command Text Field ===== */
+#commandTextField {
+    -fx-font-family: "Poppins", "Roboto", "Segoe UI Variable", sans-serif;
+    -fx-font-size: 15pt;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #0D47A1;
+    -fx-border-color: #90CAF9;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-radius: 0;
+    -fx-background-radius: 6;
+    -fx-padding: 10 8 10 8;
+    -fx-prompt-text-fill: #9E9E9E;
+}
+
+#commandTextField:focused {
+    -fx-border-color: #2196F3;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 10, 0, 0, 3);
+}
+
+/* ===== Filter/Search Fields ===== */
+#filterField {
+    -fx-font-family: "Poppins", "Roboto", "Segoe UI Variable", sans-serif;
+    -fx-font-size: 14pt;
+    -fx-background-color: #FAFAFA;
+    -fx-text-fill: #1E88E5;
+    -fx-border-color: #BBDEFB;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-radius: 0;
+    -fx-padding: 10 6 10 6;
+    -fx-prompt-text-fill: #90A4AE;
+}
+
+#filterField:focused {
+    -fx-border-color: #2196F3;
+    -fx-background-color: #FFFFFF;
+}
+
+/* ===== Dialogs ===== */
+.dialog-pane {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.3), 10, 0, 0, 4);
+}
+
+.dialog-pane > *.label.content {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0D47A1;
+}
+
+/* Context Menu Items */
+.context-menu .menu-item {
+    -fx-font-family: "Poppins", "Roboto", "Segoe UI Variable", sans-serif;
+    -fx-font-size: 14pt;
+    -fx-text-fill: #0D47A1;
+    -fx-padding: 10 20 10 20;
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+/* Hover & Focus States */
+.context-menu .menu-item:hover {
+    -fx-background-color: #E3F2FD;
+    -fx-text-fill: #0D47A1;
+}
+
+.context-menu .menu-item:focused {
+    -fx-background-color: #BBDEFB;
+    -fx-text-fill: #0D47A1;
+}
+
+/* Separator Styling */
+.context-menu .separator {
+    -fx-background-color: #E0E0E0;
+    -fx-padding: 3 0 3 0;
+}
+
+/* Context Menu Label (Fallback) */
+.context-menu .label {
+    -fx-font-family: "Poppins", "Roboto", "Segoe UI Variable", sans-serif;
+    -fx-font-size: 14pt;
+    -fx-text-fill: #0D47A1;
+}
+
+/* ===== Accent Labels ===== */
+#tags .label {
+    -fx-text-fill: white;
+    -fx-background-color: #8E24AA;
+    -fx-padding: 2 6 2 6;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-font-size: 11pt;
+    -fx-font-weight: bold;
+}
+
+.role-label {
+    -fx-background-color: #42A5F5;
+    -fx-text-fill: white;
+    -fx-padding: 2 6 2 6;
+    -fx-background-radius: 12;
+    -fx-font-weight: bold;
+}
+
+/* ===== Card Image Styling ===== */
+.card-image, #profileImage {
+    -fx-fit-width: 128px;
+    -fx-fit-height: 128px;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.15), 8, 0, 0, 2);
+    -fx-cursor: hand;
+    -fx-padding: 0 15 0 0;
+}
+
+.card-image:hover {
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(33,150,243,0.25), 12, 0, 0, 3);
+}
