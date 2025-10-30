@@ -72,7 +72,6 @@ public class EditCommand extends Command {
         this.index = index;
         this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
     }
-
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
@@ -89,6 +88,19 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
+        if (editedPerson instanceof Mentor editedMentor) {
+            Centre centre = editedMentor.getCentre();
+            for (Person person : lastShownList) {
+                if (person instanceof Student student && student.getMentor() != null) {
+                    boolean isMatched = student.getMentor().equals(personToEdit);
+                    boolean isCentreChanged = !student.getCentre().equals(centre);
+                    if (isMatched && isCentreChanged) {
+                        student.removeMentor();
+                        model.setPerson(student, student);
+                    }
+                }
+            }
+        }
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
@@ -127,8 +139,13 @@ public class EditCommand extends Command {
                     updatedTags, updatedCentre);
             break;
         case "Student":
-            person = new Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark,
+            Student newStudent = new Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark,
                     updatedTags, updatedCentre);
+            Mentor mentor = ((Student) personToEdit).getMentor();
+            if (mentor != null && mentor.getCentre().equals(updatedCentre)) {
+                newStudent.setMentor(mentor);
+            }
+            person = newStudent;
             break;
         default:
             person = new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedTags);

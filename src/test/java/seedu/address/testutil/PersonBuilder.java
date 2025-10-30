@@ -25,9 +25,14 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_REMARK = "";
-    public static final String STUDENT_ROLE = "STUDENT";
-    public static final String MENTOR_ROLE = "MENTOR";
+    public static final String DEFAULT_ROLE = "Person";
+    public static final String STUDENT_ROLE = "Student";
+    public static final String MENTOR_ROLE = "Mentor";
     public static final String DEFAULT_CENTRE = "Centre Unassigned";
+    public static final Mentor DEFAULT_ASSIGNED_MENTOR = new Mentor(new Name("Default Mentor"),
+            new Phone(DEFAULT_PHONE), new Email(DEFAULT_EMAIL), new Address(DEFAULT_ADDRESS),
+            new Remark(DEFAULT_REMARK), new HashSet<>(), new Centre(DEFAULT_CENTRE));
+
 
     private Name name;
     private Phone phone;
@@ -35,6 +40,8 @@ public class PersonBuilder {
     private Address address;
     private Remark remark;
     private Set<Tag> tags;
+    private String role;
+    private Mentor mentor;
     private Centre centre;
 
     /**
@@ -47,6 +54,8 @@ public class PersonBuilder {
         address = new Address(DEFAULT_ADDRESS);
         remark = new Remark(DEFAULT_REMARK);
         tags = new HashSet<>();
+        role = DEFAULT_ROLE;
+        mentor = DEFAULT_ASSIGNED_MENTOR;
         centre = new Centre(DEFAULT_CENTRE);
     }
 
@@ -59,6 +68,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         remark = personToCopy.getRemark();
+        role = personToCopy.getRole();
         tags = new HashSet<>(personToCopy.getTags());
     }
 
@@ -72,6 +82,8 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         remark = personToCopy.getRemark();
         tags = new HashSet<>(personToCopy.getTags());
+        role = personToCopy.getRole();
+        mentor = personToCopy.getMentor();
         centre = personToCopy.getCentre();
     }
 
@@ -85,6 +97,7 @@ public class PersonBuilder {
         address = personToCopy.getAddress();
         remark = personToCopy.getRemark();
         tags = new HashSet<>(personToCopy.getTags());
+        role = personToCopy.getRole();
         centre = personToCopy.getCentre();
     }
 
@@ -137,6 +150,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Remark} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withAssignedMentor(Mentor mentor) {
+        this.mentor = mentor;
+        return this;
+    }
+
+    /**
      * Sets the {@code Centre} of the {@code Person} that we are building.
      */
     public PersonBuilder withCentre(String centre) {
@@ -144,15 +165,27 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Returns the {@code Person} object that we are building.
+     */
     public Person build() {
         return new Person(name, phone, email, address, remark, tags);
     }
 
+    /**
+     * Returns the {@code Student} object that we are building.
+     */
     public Student buildStudent() {
-        return new Student(name, phone, email, address, remark, tags, centre);
+        Student createdStudent = new Student(name, phone, email, address, remark, tags, centre);
+        createdStudent.setMentor(mentor);
+        return createdStudent;
     }
 
+    /**
+     * Returns the {@code Mentor} object that we are building.
+     */
     public Mentor buildMentor() {
         return new Mentor(name, phone, email, address, remark, tags, centre);
     }
+
 }
