@@ -59,7 +59,7 @@ public class MentorInCentreHasStudentsPredicate extends CentreContainsKeywordsPr
 
         this.rawStudentList = rawStudentList;
 
-        this.assignedMentorsList =  rawStudentList.stream()
+        this.assignedMentorsList = rawStudentList.stream()
                 .filter(student -> student.hasMentor())
                 .map(assignedStudent -> assignedStudent.getMentor()).toList();
     }
