@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENT;
 import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.UnmatchCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -27,7 +26,7 @@ public class UnmatchCommandParser implements Parser<UnmatchCommand> {
 
         if (!arePrefixesPresent(argMultimap, PREFIX_MENTOR, PREFIX_STUDENT)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UnmatchCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_MENTOR, PREFIX_STUDENT);

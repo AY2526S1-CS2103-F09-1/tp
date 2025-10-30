@@ -21,7 +21,7 @@ Mentorface is a **desktop app for managing personal details of mentors and stude
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](docs/images/Ui.png)
+   ![Ui](images/Ui.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -68,7 +68,7 @@ Mentorface is a **desktop app for managing personal details of mentors and stude
 
 Shows a message explaining how to access the help page.
 
-![help message](docs/images/helpMessage.png)
+![help message](images/helpMessage.png)
 
 Format: `help`
 
@@ -97,33 +97,26 @@ Shows a list of all persons in the address book.
 
 Format: `list`
 
-### Matching a mentor and a student: `match`
+### Clearing all entries : `clear`
 
-* Matches a mentor and student with each other.
+Clears all entries from the address book.
 
-Format: `match m/MENTOR_INDEX s/STUDENT_INDEX`
+Format: `clear`
 
-* Matches the mentor at `MENTOR_INDEX` with the student at `STUDENT_INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
-* A match can only be performed if the person at `MENTOR_INDEX` has the mentor role, and if the person at `STUDENT_INDEX` has the student role.
-* A match can only be performed between a mentor and student who are assigned to the same centre.
-* After matching, the student's mentor is displayed as a field in the app.
+### Deleting a person : `delete`
 
-Examples:
-* `match m/1 s/2` matches the mentor at the first index and the student at the second index.
-  ![result for 'match m/1 s/2'](docs/images/matchJohnJaneResult.png)
+Deletes the specified person from the address book.
 
-### Unmatching a mentor and a student: `unmatch`
+Format: `delete INDEX`
 
-* Unmatches a mentor and student from each other.
-
-Format: `unmatch m/MENTOR_INDEX s/STUDENT_INDEX`
-
-* Unmatches the mentor at `MENTOR_INDEX` from the student at `STUDENT_INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
-* Unmatch can only be performed if the mentor and student were already matched previously.
-* After matching, the student's mentor is no longer displayed.
+* Deletes the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* **IMPORTANT NOTE**: If the person deleted is a mentor of a particular student, the mentor-student relationship between the two will be removed too.
 
 Examples:
-* `unmatch m/1 s/2` unmatches the mentor at the first index and the student at the second index.
+* `list` followed by `delete 2` deletes the 2nd person in the address book.
+* `findbyname Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
 ### Editing a person : `edit`
 
@@ -144,6 +137,34 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
+### Matching a mentor and a student: `match`
+
+* Matches a mentor and student with each other.
+
+Format: `match m/MENTOR_INDEX s/STUDENT_INDEX`
+
+* Matches the mentor at `MENTOR_INDEX` with the student at `STUDENT_INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
+* A match can only be performed if the person at `MENTOR_INDEX` has the mentor role, and if the person at `STUDENT_INDEX` has the student role.
+* A match can only be performed between a mentor and student who are assigned to the same centre.
+* After matching, the student's mentor is displayed as a field in the app.
+
+Examples:
+* `match m/1 s/2` matches the mentor at the first index and the student at the second index.
+  ![result for 'match m/1 s/2'](images/matchJohnJaneResult.png)
+
+### Unmatching a mentor and a student: `unmatch`
+
+* Unmatches a mentor and student from each other.
+
+Format: `unmatch m/MENTOR_INDEX s/STUDENT_INDEX`
+
+* Unmatches the mentor at `MENTOR_INDEX` from the student at `STUDENT_INDEX`. The index refers to the index number shown in the displayed person list. The index must be a positive integer 1, 2, 3, …​
+* Unmatch can only be performed if the mentor and student were already matched previously.
+* After matching, the student's mentor is no longer displayed.
+
+Examples:
+* `unmatch m/1 s/2` unmatches the mentor at the first index and the student at the second index.
+
 ### Locating persons by name: `findbyname`
 
 Finds persons whose names contain any of the given keywords.
@@ -160,7 +181,7 @@ Format: `findbyname KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `findbyname John` returns `john` and `John Doe`
 * `findbyname alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](docs/images/findAlexDavidResult.png)
+  ![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Locating persons by address: `findbyaddress`
 
@@ -183,24 +204,15 @@ Examples:
 
 ### Deleting a person : `delete`
 
-Deletes the specified person from the address book.
+### Locating persons by address: `findbycentre`
 
-Format: `delete INDEX`
+### Locating persons by address: `findbyrole`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* **IMPORTANT NOTE**: If the person deleted is a mentor of a particular student, the mentor-student relationship between the two will be removed too.
+### Listing unmatched students and mentors in a centre: `listunmatched`
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `findbyname Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+### Listing students of a mentor: `showstudent`
 
-### Clearing all entries : `clear`
-
-Clears all entries from the address book.
-
-Format: `clear`
+### Making a remark on a contact: `remark`
 
 ### Exiting the program : `exit`
 
@@ -248,17 +260,18 @@ _Details coming soon ..._
 Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/ROLE [c/CENTRE] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 r/Student c/Punggol Primary School t/Monday`
+**List** | `list`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [r/ROLE] [c/CENTRE] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Match** | `match m/INDEX s/INDEX` <br> e.g., `match m/2 s/3`
+**Unmatch** | `unmatch m/INDEX s/INDEX` <br> e.g., `unmatch m/2 s/3`
+**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Find By Address** | `findbyaddress PART_OF_ADDRESS`<br> e.g., `findbyaddress Clementi`
 **Find By Centre** | `findbycentre CENTRE_NAME` <br> e.g., `findbycentre Nan Hua High School`
-**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Find By Role** | `findbyrole ROLE` <br> e.g., `findbyrole Student`
-**List** | `list`
 **List Unmatched** | `listunmatched KEYWORD` <br> e.g., `listunmatched Punggol Primary School`
-**Match** | `match m/INDEX s/INDEX` <br> e.g., `match m/2 s/3`
-**Remark** | `remark INDEX rm/REMARK` <br> e.g., `remark 3 rm/only free on Friday`
 **Show Students** | `showstudent INDEX` <br> e.g., `showstudent 3`
-**Unmatch** | `unmatch m/INDEX s/INDEX` <br> e.g., `unmatch m/2 s/3`
+**Remark** | `remark INDEX rm/REMARK` <br> e.g., `remark 3 rm/only free on Friday`
 **Help** | `help`
+**Exit** | `exit`
