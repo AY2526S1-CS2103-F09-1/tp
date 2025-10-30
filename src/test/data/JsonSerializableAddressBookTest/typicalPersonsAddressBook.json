@@ -7,13 +7,13 @@
     "address" : "123, Jurong West Ave 6, #08-111",
     "remark" : "She likes aardvarks.",
     "role" : "Mentor",
-    "centre" : "Nan Hua High School",
+    "centre" : "Centre Unassigned",
     "mentor" : "",
     "tags" : [ "friends" ]
   }, {
     "name" : "Benson Meier",
     "phone" : "98765432",
-    "email" : "bensonM@example.com",
+    "email" : "johnd@example.com",
     "address" : "311, Clementi Ave 2, #02-25",
     "remark" : "He can't take beer!",
     "role" : "Student",
