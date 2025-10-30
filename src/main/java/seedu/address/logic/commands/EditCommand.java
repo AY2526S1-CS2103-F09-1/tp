@@ -90,20 +90,25 @@ public class EditCommand extends Command {
 
         if (editedPerson instanceof Mentor editedMentor) {
             Centre centre = editedMentor.getCentre();
-            for (Person person : lastShownList) {
-                if (person instanceof Student student && student.getMentor() != null) {
-                    boolean isMatched = student.getMentor().equals(personToEdit);
-                    boolean isCentreChanged = !student.getCentre().equals(centre);
-                    if (isMatched && isCentreChanged) {
-                        student.removeMentor();
-                        model.setPerson(student, student);
-                    }
-                }
-            }
+            removeMentorIfCentreChanged(lastShownList, personToEdit, centre, model);
         }
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+    }
+
+    private void removeMentorIfCentreChanged(List<Person> lastShownList, Person personToEdit,
+                                             Centre centre, Model model) {
+        for (Person person : lastShownList) {
+            if (person instanceof Student student && student.getMentor() != null) {
+                boolean isMatched = student.getMentor().equals(personToEdit);
+                boolean isCentreChanged = !student.getCentre().equals(centre);
+                if (isMatched && isCentreChanged) {
+                    student.removeMentor();
+                    model.setPerson(person, student);
+                }
+            }
+        }
     }
 
     /**

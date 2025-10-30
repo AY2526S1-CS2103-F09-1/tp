@@ -32,7 +32,7 @@ public class MatchCommand extends Command {
     private final Index student;
 
     /**
-     * @param mentor index of the tutor
+     * @param mentor index of the mentor
      * @param student index of the student
      */
     public MatchCommand(Index mentor, Index student) {
