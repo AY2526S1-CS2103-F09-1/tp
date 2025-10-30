@@ -279,20 +279,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                   | I want to …​                                                                      | So that I can…​                                                                       |
 |----------|-------------------------------------------|-----------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| `* * *`  | Student volunteer                         | search up my own contact                                                          | know which tuition centre and tutee I have been assigned to                           |
+| `* * *`  | Student volunteer                         | search up my own contact                                                          | know which tuition centre and student I have been assigned to                         |
 | `* * *`  | Beneficiary                               | search for the students that are assigned to my location                          | be prepared and accommodate them to the best of my ability                            |
 | `* * *`  | Administrator                             | sort the contacts by categories                                                   | know what role my contacts play                                                       |
 | `* * *`  | Administrator                             | tag mentees to mentors                                                            | keep track of who the mentors are mentoring                                           |
+| `* * *`  | Administrator                             | create different types of contacts                                                | keep track of the different types of people I am working with                         |
+| `* * *`  | Administrator                             | match a student who has not been assigned a mentor to a mentor                    | better manage Mentor Student assignments                                              |
 | `* * *`  | Experienced user                          | remove contacts easily                                                            | have a smaller list of contacts to utilize                                            |
 | `* * *`  | Beneficiary                               | add student contacts                                                              | easily add to the list of students that require tutoring                              |
+| `* *`    | Administrator                             | sort my contacts by the beneficiaries they are assigned to                        | have an easier time assigning mentors to the correct students                         |
+| `* *`    | Administrator                             | sort by my contacts’ location                                                     | best assign the mentors to the students                                               |
+| `* *`    | Administrator                             | sort by my contacts’ role                                                         | focus on managing contacts from a specific group                                      |
 | `* *`    | Administrator                             | edit my personnel’s contacts                                                      | their entries if their contact details change                                         |
 | `* *`    | Staff member of a partner school          | obtain a list of tutees and their corresponding matched tutors                    | inform my students who their tutor is                                                 |
+| `* *`    | Administrator                             | unmatch students from mentors I have added by mistake                             | undo any matches added by mistake without deleting and adding the same contacts       |
+| `* *`    | Administrator                             | list all the students who have not been assigned a mentor and vice versa          | better distribute the workload across all the mentors                                 |
 | `* *`    | Manpower admin                            | sort the tutors and tutees by the centres they are deployed in                    | ensure each location receives enough students                                         |
-| `* *`    | Parent of the tutee                       | identify which student is attached to my child                                    | communicate with them the needs of the child and track the progress of their learning |
+| `* *`    | Parent of the student                     | identify which student is attached to my child                                    | communicate with them the needs of the child and track the progress of their learning |
 | `* *`    | Administrator                             | keep track of which subjects my tutors are able to teach and tutees need help for | match them up appropriately                                                           |
 | `* *`    | Student volunteer                         | track my students’ grades                                                         | Have an estimate of whether my work has helped them improve                           |
 | `*`      | Director of outreach                      | identify patterns within the tutor sign-up rate                                   | better understand the demographic that is receptive to the publicity                  |
-| `*`      | Administrator                             | sort by my contacts’ location                                                     | best assign the mentors to the mentees                                                |
 | `*`      | Administrator                             | track the status of my donors’ payments and payments to vendors                   | know who I need to continue completing financial transactions with                    |
 | `*`      | Student volunteer                         | monitor the number of students and tutors at each centre                          | match these against my location preferences                                           |
 | `*`      | First time user                           | transfer my contacts easily to the application                                    | not have to add all of them one by one                                                |
@@ -441,7 +447,7 @@ Use case ends
 
 1. The system should be based on the current implementation of AB3 without deviating too much.
 2. Only the administrators have the ability to make edits to the system
-3. The system should only store tutor and tutee information
+3. The system should only store Mentor and Student information
 4. The system should launch in under 2 seconds
 5. The system should add the contact to the address book in a reasonable amount of time, no more than 200ms
 6. The system should filter and return the list is no more than 5 seconds
@@ -466,6 +472,8 @@ Use case ends
 * **Beneficiary**: An organisation (not necessarily a school) that is receiving help from the NGO in the form of tutoring services provided by the NGO
 * **Tutor**: A student volunteer from a participating institution
 * **Tutee**: A student from the beneficiary that is receiving the help from the tutor
+* **Mentor**: Another word often used to refer to a Tutor
+* **Student** Another word often used to refer to a Tutee
 * **Donor**: An organisation or individual that helps fund the NGO
 * **Access Level**: The degree of permission a user has to update the system
 * **NGO**: Abbreviation for non-government organisations
