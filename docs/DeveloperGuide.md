@@ -172,7 +172,7 @@ Step 1. The user inputs the command `match m/2 s/1` to match the second person i
 
 Step 2. `Index` objects are created for the mentor and student in `MatchCommandParser` with values `2` and `1` respectively. A `MatchCommand` object is created with the two `Index` objects as arguments.
 
-Step 3. The `mentor` and `student` attributes of `MatchCommand` are initialised with the two `Index` objects passed into the constructor in the previous step. 
+Step 3. The `mentor` and `student` attributes of `MatchCommand` are initialised with the two `Index` objects passed into the constructor in the previous step.
 
 Step 4. `MatchCommand` calls `Model#getFilteredPersonList()`, which obtains the list of persons last shown in the address book.
 
@@ -187,7 +187,7 @@ Step 8. We then obtain the centres of both `studentToMatch` and `mentorToMatch`.
 Step 9. We match the mentor and student by using `student#setMentor()`. We then update the `model` using `model#setPerson()` and `model.updateFilteredPersonList()`.
 
 #### Design considerations
-Note that the reference between mentor and student is only stored in the `Student` object to prevent circular dependencies. In order to retrieve the students that a mentor is matched with, it is necessary to iterate through the entire list of people and check whether each person is a student of the mentor in question. 
+Note that the reference between mentor and student is only stored in the `Student` object to prevent circular dependencies. In order to retrieve the students that a mentor is matched with, it is necessary to iterate through the entire list of people and check whether each person is a student of the mentor in question.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -468,5 +468,6 @@ testers are expected to do more *exploratory* testing.
 ## **Appendix: Planned Enhancements**
 
 ### Adding two different people with the same name
- **It is currently not possible to add two different people with the same name.** Currently, users would have to append a numerical suffix to differentiate them (e.g. `n/Lim Jun Jie 1` and `n/Lim Jun Jie 2`) and obtain their information later on using`findbyname Lim Jun Jie`. We plan to allow the user to add people with the same name by removing the duplicate name check and prompting them with a button should this situation occur, which they can click to agree to add the new person at their own risk.
-4. **It is currently not possible to include special characters in people's names**. Currently, users have to omit the part of the name containing the special character at their own discretion (e.g. Lim Jun Jie, Bala Krishnan) when adding them. We plan to allow some such characters to be part of a person's name, and enforce this using regex.
+-**It is currently not possible to add two different people with the same name.** Currently, users would have to append a numerical suffix to differentiate them (e.g. `n/Lim Jun Jie 1` and `n/Lim Jun Jie 2`) and obtain their information later on using`findbyname Lim Jun Jie`. We plan to allow the user to add people with the same name by removing the duplicate name check and prompting them with a button should this situation occur, which they can click to agree to add the new person at their own risk.
+
+-**It is currently not possible to include special characters in people's names**. Currently, users have to omit the part of the name containing the special character at their own discretion (e.g. Lim Jun Jie, Bala Krishnan) when adding them. We plan to allow some such characters to be part of a person's name, and enforce this using regex.
