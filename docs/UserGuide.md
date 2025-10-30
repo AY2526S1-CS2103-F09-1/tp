@@ -185,15 +185,71 @@ Examples:
 
 ### Locating persons by address: `findbyaddress`
 
-### Locating persons by address: `findbycentre`
+  Find persons whose address matches any of the keywords.
 
-### Locating persons by address: `findbyrole`
+  Format: `findbyaddress KEYWORD`
+
+  * The keyword is a substring of the result so it does not have to be the whole address for easier searching. eg `Cle` is a substring of    `Clementi Ave 2`
+
+  Examples:
+  
+  * `findbyaddress Clementi Ave 2`
+
+### Locating persons by centre: `findbycentre`
+
+Finds persons whose centre matches any of the keywords.
+
+  Format: `findbycentre KEYWORD`
+
+  * Similar to findbyaddress, keyword is  a substring of the result
+  * Contacts that do not have a centre assigned yet will have their field as `Centre Unassigned`. Thus, any substring of that, will list the said person
+
+  Examples:
+  
+  * `findbycentre Nan Hua High School`
+
+### Locating persons by role: `findbyrole`
+
+Finds persons by role.
+
+  Format: `findbyrole ROLE`
+
+  * Currently, the system has only Mentor and Student specific roles, therefore the only roles that can be used is Mentor and Student
+  * Case-sensitive. `MENTOR` is not the same as `Mentor` and thus would not work
+
+  Examples:
+  
+  * `findbyrole Mentor`
+  * `findbyrole Student`
 
 ### Listing unmatched students and mentors in a centre: `listunmatched`
 
 ### Listing students of a mentor: `showstudent`
 
+List all the students matched to the mentor of your choosing.
+
+Format: `showstudent INDEX`
+
+* Shows all the students of the mentor of the specified `INDEX`
+* Index must be a valid positive integer in the list
+* Index must be a Mentor. An error message will be shown if the role is not a mentor
+* After executing the command, enter the command `list` to use `showstudent` again on another Mentor
+
+Examples:
+* `showstudent 3`
+
 ### Making a remark on a contact: `remark`
+
+Make a remark about the person.
+
+Format `remark INDEX rm/REMARK`
+
+* Index must be a valid positive integer in the list
+* Remarks are not edited through the `edit` command, if you want to edit a remark, reuse the `remark` command
+* Remarks are optional. If a person does not have any remark, it would not show in the address book
+
+Examples:
+* `remark 3 rm/only free on Friday`
 
 ### Exiting the program : `exit`
 
@@ -240,6 +296,7 @@ _Details coming soon ..._
 
 Action | Format, Examples
 --------|------------------
+**Help** | `help`
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/ROLE [c/CENTRE] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 r/Student c/Punggol Primary School t/Monday`
 **List** | `list`
 **Clear** | `clear`
@@ -249,10 +306,9 @@ Action | Format, Examples
 **Unmatch** | `unmatch m/INDEX s/INDEX` <br> e.g., `unmatch m/2 s/3`
 **Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Find By Address** | `findbyaddress PART_OF_ADDRESS`<br> e.g., `findbyaddress Clementi`
-**Find By Centre** | `findbycentre CENTRE_NAME` <br> e.g., `findbycentre Nan Hua High School`
+**Find By Centre** | `findbycentre PART_OF_CENTRE` <br> e.g., `findbycentre Nan Hua High School`
 **Find By Role** | `findbyrole ROLE` <br> e.g., `findbyrole Student`
 **List Unmatched** | `listunmatched KEYWORD` <br> e.g., `listunmatched Punggol Primary School`
 **Show Students** | `showstudent INDEX` <br> e.g., `showstudent 3`
 **Remark** | `remark INDEX rm/REMARK` <br> e.g., `remark 3 rm/only free on Friday`
-**Help** | `help`
 **Exit** | `exit`
