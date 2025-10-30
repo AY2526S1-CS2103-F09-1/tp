@@ -28,8 +28,9 @@ public class MatchCommandTest {
 
     @Test
     public void execute_validIndexValidRoles_success() {
-        Mentor mentor = new PersonBuilder().buildMentor();
-        Student student = new PersonBuilder().withName("Alice Student").buildStudent();
+        Mentor mentor = new PersonBuilder().withCentre("Clementi Primary School").buildMentor();
+        Student student = new PersonBuilder().withCentre("Clementi Primary School")
+                .withName("Alice Student").buildStudent();
         model.addPerson(mentor);
         model.addPerson(student);
         Index mentorIndex = Index.fromOneBased(model.getFilteredPersonList().size() - 1);

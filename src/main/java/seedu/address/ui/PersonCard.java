@@ -96,7 +96,9 @@ public class PersonCard extends UiPart<Region> {
             mentor.setManaged(false);
             mentor.setVisible(false);
         }
-        if (person.getRemark().value.equals("") || person.getRemark() == null) {
+        if (person.getRemark() == null
+                || person.getRemark().value == null
+                || person.getRemark().value.isEmpty()) {
             remark.setManaged(false);
             remark.setVisible(false);
         } else {
