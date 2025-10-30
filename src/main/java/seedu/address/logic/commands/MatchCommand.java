@@ -1,6 +1,8 @@
 package seedu.address.logic.commands;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_MENTOR;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STUDENT;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.List;
@@ -14,10 +16,16 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Student;
 
 /**
- * Matches a tutor and tutee.
+ * Matches a mentor and student.
  */
 public class MatchCommand extends Command {
     public static final String COMMAND_WORD = "match";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Matches a mentor to a student\n"
+            + "Parameters: "
+            + PREFIX_MENTOR + "MENTOR INDEX "
+            + PREFIX_STUDENT + "STUDENT INDEX\n"
+            + "Example : match m/1 s/2";
 
     private final Index mentor;
     private final Index student;
