@@ -252,8 +252,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 
-*{More to be added}*
-
 ### Use cases
 
 (For all use cases below, the **System** is the `Mentorface` unless specified otherwise)
@@ -308,9 +306,9 @@ Use case ends
 
 ### Use case: U03 - Find a person in Mentorface
 
-#### Actor: User
+#### Actor: Administrator
 
-#### Person: Administrator, Tutor, Tutee
+#### Person: Mentor, Student
 
 #### MSS:
 1. User provides the input to find a specified person from Mentorface
@@ -336,8 +334,8 @@ Use case ends
 #### Actor: Administrator
 
 #### MSS:
-1. Administrator inputs the 2 people that they want to match into Mentorface
-2. Mentorface adds a tag to indicate that these 2 people have been matched and notifies the administrator that the match was successful
+1. Administrator inputs the mentor and student that they want to match into Mentorface
+2. Mentorface adds an attribute to indicate that the mentor and student have been matched and notifies the administrator that the match was successful
 
 Use case ends
 
@@ -349,7 +347,7 @@ Use case ends
 
 Steps 1a1 and 1a2 repeats until Mentorface can find the people specified by the administrator.
 
-1a3. Mentorface adds a tag to indicate that these 2 people have been matched and notifies the administrator that the match was successful
+1a3. Mentorface adds an attribute to indicate that the mentor and student have been matched and notifies the administrator that the match was successful
 
 Use case ends
 
@@ -386,7 +384,6 @@ Steps 1b1 and 1b2 repeats until Mentorface can find the person and there is no e
 
 Use case ends
 
-*{More to be added}*
 
 ### Non-Functional Requirements
 
@@ -399,17 +396,14 @@ Use case ends
 7. The system needs to work with older operating systems as NGOs may not have the latest versions. Minimally Windows 7 onwards, macOS 13 onwards, Linux Ubuntu 20 onwards
 8. The system should have identical behaviour across Windows, macOS and Linux
 9. The system needs to be able to store a large amount of contacts (at least 1000 inputs)
-10. The system needs to be able to handle name conflicts (where 2 people share the same name) during searches
-11. The system should account for the possibility that 2 inputs can be exactly the same
-12. The system should be easy to understand for a novice user that prefers a CLI
-13. The system should not support the upload of images for privacy reasons
-14. The system should store the data locally on the user's device
-15. The system only needs to handle input for 1 user at a given time
-16. The system should work on a computer that has a version of java 17
-17. The GUI of the system needs to work for screens with resolution of at least 1280x720 and higher
-18. The system should be PDF friendly
-
-*{More to be added}*
+10. The system should account for the possibility that 2 inputs can be exactly the same
+11. The system should be easy to understand for a novice user that prefers a CLI
+12. The system should not support the upload of images for privacy reasons
+13. The system should store the data locally on the user's device
+14. The system only needs to handle input for 1 user at a given time
+15. The system should work on a computer that has a version of java 17
+16. The GUI of the system needs to work for screens with resolution of at least 1280x720 and higher
+17. The system should be PDF friendly
 
 ### Glossary
 
@@ -423,7 +417,6 @@ Use case ends
 * **Access Level**: The degree of permission a user has to update the system
 * **NGO**: Abbreviation for non-government organisations
 
-*{More to be added}*
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -451,8 +444,6 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
@@ -468,12 +459,9 @@ testers are expected to do more *exploratory* testing.
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
-
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
