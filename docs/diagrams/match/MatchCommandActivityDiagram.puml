@@ -1,0 +1,42 @@
+@startuml
+start
+
+:Get filtered person list from model;
+
+if () then ([mentor index >= list size OR\nstudent index >= list size])
+  :Throw CommandException\n(MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+  stop
+else ([valid indices])
+endif
+
+:Get mentorToMatch from list;
+:Get studentToMatch from list;
+
+if () then ([mentorToMatch is Mentor AND\nstudentToMatch is Student])
+  :Cast to mentorObj and studentObj;
+  :Get current mentor from studentObj;
+  
+  if () then ([curMentor != null AND\ncurMentor equals mentorObj])
+    :Throw CommandException\n(MESSAGE_PERSONS_ALREADY_MATCHED);
+    stop
+  else ([no existing match])
+  endif
+  
+  if () then ([mentorObj centre equals\nstudentObj centre])
+    :Set mentorObj as studentObj's mentor;
+    :Update student in model;
+    :Update filtered person list;
+    :Create success CommandResult;
+  else ([different centres])
+    :Throw CommandException\n(MESSAGE_MATCH_BETWEEN_DIFFERENT_CENTRES);
+    stop
+  endif
+else ([invalid roles])
+  :Throw CommandException\n(MESSAGE_INVALID_ROLES_MATCHED);
+  stop
+endif
+
+:Return CommandResult with\nmentor and student names;
+stop
+
+@enduml
