@@ -162,6 +162,25 @@ Examples:
 * `findbyname alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](docs/images/findAlexDavidResult.png)
 
+### Locating persons by address: `findbyaddress`
+
+Finds persons whose address contains the entire keyword.
+
+Format: `findbyname KEYWORD`
+
+* The search is case-insensitive. e.g `hans` will match `Hans`
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* Only the name is searched.
+* Only full words will be matched e.g. `Han` will not match `Hans`
+* Persons matching at least one keyword will be returned (i.e. `OR` search).
+  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+
+Examples:
+* `findbyname John` returns `john` and `John Doe`
+* `findbyname alex david` returns `Alex Yeoh`, `David Li`<br>
+  ![result for 'find alex david'](docs/images/findAlexDavidResult.png)
+
+
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
