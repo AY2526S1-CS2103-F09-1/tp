@@ -75,7 +75,7 @@ Format: `help`
 
 ### Adding a person: `add`
 
-Adds a person to the address book. 
+Adds a person to the address book.
 
 A person **must have a role** that is either student or mentor. This is specified using the parameter `r/` as either `r/Student` or `r/Mentor`.
 
@@ -185,11 +185,32 @@ Examples:
 
 ### Locating persons by address: `findbyaddress`
 
+Finds persons whose address contains the entire keyword.
+
+Format: `findbyaddress KEYWORD`
+
+* The search is case-insensitive. e.g `Bedok` will match `bedok`
+* Only the address is searched.
+* The entire keyword will be tested against the address and only exact matches will be returned. findbyaddress will not return address that match any substring in KEYWORD
+
+Examples:
+* `findbyaddress street` returns all `Students` and `Mentors` with `street` in the address field
+  ![result for 'findbyaddress street'](images/findbyaddressStreetResult.png)
+* `findbyaddress gardens street` returns all `Students` and `Mentors` with `gardens street` in the address field <br>
+  ![result for 'find alex david'](images/findbyaddressGardenStreetResults.png)
+
 ### Locating persons by address: `findbycentre`
 
 ### Locating persons by address: `findbyrole`
 
 ### Listing unmatched students and mentors in a centre: `listunmatched`
+
+* `listunmatched Bedok` will return all unmatched `Students` and `Mentors` that have `Bedok` in the `Centre` field.
+    * Eg: `Bedok Place`, `Bedok Centre`, `Bedok Tuition` are all valid `Centre` locations
+      ![result for 'listunmatched Bedok'](images/listunmatchedBedok.png)
+* `listunmatched Bedok Centre` will return all unmatched `Students` and `Mentors` that have `Bedok Centre` in the `Centre` field.
+    * Eg: `Bedok Place` and `Bedok Tuition` are no longer valid. But `Bedok Centre` and `Bedok Centre Tuition` are now valid.
+      ![result for 'listunmatched Bedok Centre'](images/listunmatchedBedokCentre.png)
 
 ### Listing students of a mentor: `showstudent`
 

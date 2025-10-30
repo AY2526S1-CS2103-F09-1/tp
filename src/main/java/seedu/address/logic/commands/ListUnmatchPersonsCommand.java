@@ -26,8 +26,7 @@ public class ListUnmatchPersonsCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.updateFilteredPersonList(new MentorInCentreHasStudentsPredicate(
-                model.getFilteredPersonList(), keywords));
+        model.updateFilteredPersonList(new MentorInCentreHasStudentsPredicate(model, keywords));
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
