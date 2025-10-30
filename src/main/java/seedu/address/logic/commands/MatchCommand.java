@@ -11,6 +11,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Centre;
 import seedu.address.model.person.Mentor;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Student;
@@ -50,22 +51,26 @@ public class MatchCommand extends Command {
         Person mentorToMatch = lastShownList.get(mentor.getZeroBased());
         Person studentToMatch = lastShownList.get(student.getZeroBased());
 
-        if (mentorToMatch instanceof Mentor mentorObj && studentToMatch instanceof Student studentObj) {
-            Mentor curMentor = studentObj.getMentor();
-            if (curMentor != null && curMentor.equals(mentorObj)) {
-                throw new CommandException(Messages.MESSAGE_PERSONS_ALREADY_MATCHED);
-            }
-            if (mentorObj.getCentre().equals(studentObj.getCentre())) {
-                studentObj.setMentor(mentorObj);
-                model.setPerson(studentToMatch, studentObj);
-                model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-            } else {
-                throw new CommandException(Messages.MESSAGE_MATCH_BETWEEN_DIFFERENT_CENTRES);
-            }
-        } else {
+        if (!(mentorToMatch instanceof Mentor && studentToMatch instanceof Student student)) {
             throw new CommandException(Messages.MESSAGE_INVALID_ROLES_MATCHED);
         }
 
+        Mentor curMentor = student.getMentor();
+        if (curMentor != null && curMentor.equals(mentorToMatch)) {
+            throw new CommandException(Messages.MESSAGE_PERSONS_ALREADY_MATCHED);
+        }
+        Centre mentorCentre = ((Mentor) mentorToMatch).getCentre();
+        Centre studentCentre = student.getCentre();
+        if (mentorCentre.equals(studentCentre)) {
+            if (mentorCentre.value.equals("Centre Unassigned")) {
+                throw new CommandException(Messages.MESSAGE_MATCHED_PERSONS_CENTRES_UNASSIGNED);
+            }
+            student.setMentor((Mentor) mentorToMatch);
+            model.setPerson(studentToMatch, student);
+            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        } else {
+            throw new CommandException(Messages.MESSAGE_MATCH_BETWEEN_DIFFERENT_CENTRES);
+        }
         return new CommandResult("Mentor: " + mentorToMatch.getName() + "\nmatched to\nStudent: "
                 + studentToMatch.getName());
     }

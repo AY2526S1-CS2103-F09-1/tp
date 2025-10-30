@@ -27,7 +27,8 @@ public class Messages {
     public static final String MESSAGE_MATCH_BETWEEN_DIFFERENT_CENTRES =
             "Matches between a mentor and student in different centres are not allowed!";
     public static final String MESSAGE_PERSONS_ALREADY_MATCHED = "The mentor and student are already matched!";
-
+    public static final String MESSAGE_MATCHED_PERSONS_CENTRES_UNASSIGNED = "The mentor and student have not "
+            + "been assigned to centres!";
     /**
      * Returns an error message indicating the duplicate prefixes.
      */
