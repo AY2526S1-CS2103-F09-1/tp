@@ -187,28 +187,30 @@ Examples:
 
 Finds persons whose address contains the entire keyword.
 
-Format: `findbyname KEYWORD`
+Format: `findbyaddress KEYWORD`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* The search is case-insensitive. e.g `Bedok` will match `bedok`
+* Only the address is searched.
+* The entire keyword will be tested against the address and only exact matches will be returned. findbyaddress will not return address that match any substring in KEYWORD
 
 Examples:
-* `findbyname John` returns `john` and `John Doe`
-* `findbyname alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](docs/images/findAlexDavidResult.png)
-
-
-### Deleting a person : `delete`
+* `findbyaddress street` returns all `Students` and `Mentors` with `street` in the address field
+  ![result for 'findbyaddress street'](images/findbyaddressStreetResult.png)
+* `findbyaddress gardens street` returns all `Students` and `Mentors` with `gardens street` in the address field <br>
+  ![result for 'find alex david'](images/findbyaddressGardenStreetResults.png)
 
 ### Locating persons by address: `findbycentre`
 
 ### Locating persons by address: `findbyrole`
 
 ### Listing unmatched students and mentors in a centre: `listunmatched`
+
+* `listunmatched Bedok` will return all unmatched `Students` and `Mentors` that have `Bedok` in the `Centre` field.
+    * Eg: `Bedok Place`, `Bedok Centre`, `Bedok Tuition` are all valid `Centre` locations
+      ![result for 'listunmatched Bedok'](images/listunmatchedBedok.png)
+* `listunmatched Bedok Centre` will return all unmatched `Students` and `Mentors` that have `Bedok Centre` in the `Centre` field.
+    * Eg: `Bedok Place` and `Bedok Tuition` are no longer valid. But `Bedok Centre` and `Bedok Centre Tuition` are now valid.
+      ![result for 'listunmatched Bedok Centre'](images/listunmatchedBedokCentre.png)
 
 ### Listing students of a mentor: `showstudent`
 
