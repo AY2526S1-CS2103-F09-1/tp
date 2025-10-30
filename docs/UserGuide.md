@@ -21,7 +21,7 @@ Mentorface is a **desktop app for managing personal details of mentors and stude
 
 1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](docs/images/Ui.png)
+   ![Ui](images/Ui.png)
 
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
@@ -68,7 +68,7 @@ Mentorface is a **desktop app for managing personal details of mentors and stude
 
 Shows a message explaining how to access the help page.
 
-![help message](docs/images/helpMessage.png)
+![help message](images/helpMessage.png)
 
 Format: `help`
 
@@ -110,7 +110,7 @@ Format: `match m/MENTOR_INDEX s/STUDENT_INDEX`
 
 Examples:
 * `match m/1 s/2` matches the mentor at the first index and the student at the second index.
-  ![result for 'match m/1 s/2'](docs/images/matchJohnJaneResult.png)
+  ![result for 'match m/1 s/2'](images/matchJohnJaneResult.png)
 
 ### Unmatching a mentor and a student: `unmatch`
 
@@ -160,7 +160,7 @@ Format: `findbyname KEYWORD [MORE_KEYWORDS]`
 Examples:
 * `findbyname John` returns `john` and `John Doe`
 * `findbyname alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](docs/images/findAlexDavidResult.png)
+  ![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Deleting a person : `delete`
 
