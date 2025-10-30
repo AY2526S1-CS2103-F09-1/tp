@@ -1,11 +1,11 @@
 package seedu.address.model.person;
 
-import seedu.address.model.Model;
-
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.function.Predicate;
+
+import seedu.address.model.Model;
 
 
 /**
@@ -50,8 +50,6 @@ public class MentorInCentreHasStudentsPredicate extends CentreContainsKeywordsPr
                 .map(mentorPerson -> (Mentor) mentorPerson)
                 .toList();
 
-        System.out.println("rawmentorlist: " + rawMentorList);
-
         this.rawMentorList = rawMentorList;
 
         List<Student> rawStudentList = model.getFilteredPersonList().stream()
@@ -59,13 +57,11 @@ public class MentorInCentreHasStudentsPredicate extends CentreContainsKeywordsPr
                 .map(studentPerson -> (Student) studentPerson)
                 .toList();
 
-        this.rawStudentList= rawStudentList;
+        this.rawStudentList = rawStudentList;
 
         this.assignedMentorsList =  rawStudentList.stream()
                 .filter(student -> student.hasMentor())
                 .map(assignedStudent -> assignedStudent.getMentor()).toList();
-
-        System.out.println(assignedMentorsList);
     }
 
     @Override
