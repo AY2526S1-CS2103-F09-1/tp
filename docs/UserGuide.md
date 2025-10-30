@@ -257,10 +257,10 @@ Adds a remark to a person.
 
 Format `remark INDEX rm/REMARK`
 
-* Index must be a valid positive integer in the list
-* Remarks are not edited through the `edit` command, if you want to edit a remark, reuse the `remark` command
-* Remarks are optional. If a person does not have any remark, it would not show in the address book
-* To delete a remark, use `remark INDEX /rm`
+* Index must be a valid positive integer in the list.
+* Remarks are not edited through the `edit` command, if you want to edit a remark, use the `remark` command again.
+* Remarks are optional. If a person does not have any remark, it does not show up as an attribute in the address book.
+* To delete a remark, use `remark INDEX /rm`.
 
 Examples:
 * `remark 3 rm/only free on Friday`

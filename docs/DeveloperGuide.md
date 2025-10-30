@@ -444,6 +444,44 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
+### Adding a person
+
+1. Adding a person while all persons are being shown
+
+   1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/Student`<br>
+      Expected: Student "John Doe" added with centre defaulting to "Centre Unassigned"
+
+   1. Test case: `add n/Jane Doe p/91233213 e/jane@example.com a/420 Clementi Street 5 r/Mentor c/Clementi Primary School`<br>
+      Expected: Mentor "Jane Doe" added with centre "Clementi Primary School"
+
+   1. Test case: `add n/Sarah Lee p/91234567 e/sarah@example.com a/123 Main St r/MENTOR c/Bedok Centre t/Math t/Monday`<br>
+      Expected: Person is not added as the role is invalid.
+
+### Matching mentors and students
+
+1. Matching a mentor and student
+
+   1. Prerequisites: One mentor and one student both at "Bedok Centre"
+
+   1. Note mentor index and student index
+
+   1. Test case: `match m/MENTOR_INDEX s/STUDENT_INDEX`<br>
+      Expected: Match successful, student's card displays mentor's name.
+
+   1. Other incorrect match commands to try: matching two mentors, two students, mentor and student from different centres
+
+### Editing a person
+
+1. Editing the centre of a natched mentor/student
+   
+   1. Prerequisites: Mentor and student matched at same centre
+
+   1. Note the matched mentor index
+
+   1. Test case: `edit <mentor_index> c/Different Centre` <br>
+      Expected: Mentor's centre updated and student's mentor field no longer shows the mentor's name.
+
+
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
@@ -451,19 +489,36 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
    1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
 
    1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No person is deleted. Error details shown in the status message.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-### Saving data
+1. Deleting a matched mentor
+   
+   1. Prerequisites: Mentor and student(s) matched at same centre
 
-1. Dealing with missing/corrupted data files
+   1. Note the matched mentor index
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Test case: `delete MENTOR_INDEX` <br>
+      Expected:  Mentor is deleted. All of the mentor's former students no longer have the mentor's name displayed in their mentor field(s).
+
+### Showing a mentor's students
+
+1. Show students of a valid mentor
+
+   1. Prerequisites: Mentor with matched students.
+
+   1. Note the mentor's index
+
+   1. Test case: `showstudent MENTOR_INDEX`<br>
+      Expected: All students matched to the mentor displayed.
+   
+   1. Other incorrect `showstudent` commands to try: `showstudent MENTOR_INDEX` where the person at`MENTOR_INDEX` is a student, `showstudent` multiple times (need to use `list` between them to regenerate the list of all persons)
+
 
 ## **Appendix: Planned Enhancements**
 
