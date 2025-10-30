@@ -97,6 +97,46 @@ Shows a list of all persons in the address book.
 
 Format: `list`
 
+### Clearing all entries : `clear`
+
+Clears all entries from the address book.
+
+Format: `clear`
+
+### Deleting a person : `delete`
+
+Deletes the specified person from the address book.
+
+Format: `delete INDEX`
+
+* Deletes the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* **IMPORTANT NOTE**: If the person deleted is a mentor of a particular student, the mentor-student relationship between the two will be removed too.
+
+Examples:
+* `list` followed by `delete 2` deletes the 2nd person in the address book.
+* `findbyname Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
+### Editing a person : `edit`
+
+Edits an existing person in the address book.
+
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/CENTRE] [t/TAG]…​`
+
+* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* **Note that it is not possible to edit a person's role**.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
+* You can remove all the person’s tags by typing `t/` without
+    specifying any tags after it.
+* **IMPORTANT NOTE**: If a mentor and a student are matched to each other and you edit the centre of either of them, they will automatically be unmatched.
+
+Examples:
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+
 ### Matching a mentor and a student: `match`
 
 * Matches a mentor and student with each other.
@@ -125,25 +165,6 @@ Format: `unmatch m/MENTOR_INDEX s/STUDENT_INDEX`
 Examples:
 * `unmatch m/1 s/2` unmatches the mentor at the first index and the student at the second index.
 
-### Editing a person : `edit`
-
-Edits an existing person in the address book.
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/CENTRE] [t/TAG]…​`
-
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* **Note that it is not possible to edit a person's role**.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
-* **IMPORTANT NOTE**: If a mentor and a student are matched to each other and you edit the centre of either of them, they will automatically be unmatched.
-
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
-
 ### Locating persons by name: `findbyname`
 
 Finds persons whose names contain any of the given keywords.
@@ -162,26 +183,17 @@ Examples:
 * `findbyname alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
-### Deleting a person : `delete`
+### Locating persons by address: `findbyaddress`
 
-Deletes the specified person from the address book.
+### Locating persons by address: `findbycentre`
 
-Format: `delete INDEX`
+### Locating persons by address: `findbyrole`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-* **IMPORTANT NOTE**: If the person deleted is a mentor of a particular student, the mentor-student relationship between the two will be removed too.
+### Listing unmatched students and mentors in a centre: `listunmatched`
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `findbyname Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+### Listing students of a mentor: `showstudent`
 
-### Clearing all entries : `clear`
-
-Clears all entries from the address book.
-
-Format: `clear`
+### Making a remark on a contact: `remark`
 
 ### Exiting the program : `exit`
 
@@ -229,17 +241,18 @@ _Details coming soon ..._
 Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/ROLE [c/CENTRE] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 r/Student c/Punggol Primary School t/Monday`
+**List** | `list`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [r/ROLE] [c/CENTRE] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Match** | `match m/INDEX s/INDEX` <br> e.g., `match m/2 s/3`
+**Unmatch** | `unmatch m/INDEX s/INDEX` <br> e.g., `unmatch m/2 s/3`
+**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Find By Address** | `findbyaddress PART_OF_ADDRESS`<br> e.g., `findbyaddress Clementi`
 **Find By Centre** | `findbycentre CENTRE_NAME` <br> e.g., `findbycentre Nan Hua High School`
-**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **Find By Role** | `findbyrole ROLE` <br> e.g., `findbyrole Student`
-**List** | `list`
 **List Unmatched** | `listunmatched KEYWORD` <br> e.g., `listunmatched Punggol Primary School`
-**Match** | `match m/INDEX s/INDEX` <br> e.g., `match m/2 s/3`
-**Remark** | `remark INDEX rm/REMARK` <br> e.g., `remark 3 rm/only free on Friday`
 **Show Students** | `showstudent INDEX` <br> e.g., `showstudent 3`
-**Unmatch** | `unmatch m/INDEX s/INDEX` <br> e.g., `unmatch m/2 s/3`
+**Remark** | `remark INDEX rm/REMARK` <br> e.g., `remark 3 rm/only free on Friday`
 **Help** | `help`
+**Exit** | `exit`
