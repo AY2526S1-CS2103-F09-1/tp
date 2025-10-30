@@ -15,13 +15,11 @@ endif
 if () then ([mentorToMatch is Mentor AND\nstudentToMatch is Student])
   :Cast to mentorObj and studentObj;
   :Get current mentor from studentObj;
-  
   if () then ([curMentor != null AND\ncurMentor equals mentorObj])
     :Throw CommandException\n(MESSAGE_PERSONS_ALREADY_MATCHED);
     stop
   else ([no existing match])
   endif
-  
   if () then ([mentorObj centre equals\nstudentObj centre])
     :Set mentorObj as studentObj's mentor;
     :Update student in model;
