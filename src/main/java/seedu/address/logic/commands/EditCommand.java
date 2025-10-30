@@ -119,8 +119,6 @@ public class EditCommand extends Command {
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
         Remark updatedRemark = personToEdit.getRemark();
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
-
-        String updateRole = editPersonDescriptor.getRole().orElse(personToEdit.getRole());
         Centre updatedCentre = editPersonDescriptor.getCentre()
                 .orElseGet(() -> {
                     if (personToEdit instanceof Student) {
@@ -133,22 +131,20 @@ public class EditCommand extends Command {
                 });
         Person person;
 
-        switch (updateRole.toString()) {
-        case "Mentor":
-            person = new Mentor(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark,
-                    updatedTags, updatedCentre);
-            break;
-        case "Student":
-            Student newStudent = new Student(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark,
-                    updatedTags, updatedCentre);
-            Mentor mentor = ((Student) personToEdit).getMentor();
+        if (personToEdit instanceof Mentor mentor) {
+            person = new Mentor(updatedName, updatedPhone, updatedEmail, updatedAddress,
+                    updatedRemark, updatedTags, updatedCentre);
+        } else if (personToEdit instanceof Student student) {
+            Student newStudent = new Student(updatedName, updatedPhone, updatedEmail, updatedAddress,
+                    updatedRemark, updatedTags, updatedCentre);
+            Mentor mentor = student.getMentor();
             if (mentor != null && mentor.getCentre().equals(updatedCentre)) {
                 newStudent.setMentor(mentor);
             }
             person = newStudent;
-            break;
-        default:
-            person = new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedRemark, updatedTags);
+        } else {
+            person = new Person(updatedName, updatedPhone, updatedEmail, updatedAddress,
+                    updatedRemark, updatedTags);
         }
 
         return person;
@@ -187,7 +183,6 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Address address;
-        private String role;
         private Centre centre;
         private Set<Tag> tags;
 
@@ -202,7 +197,6 @@ public class EditCommand extends Command {
             setPhone(toCopy.phone);
             setEmail(toCopy.email);
             setAddress(toCopy.address);
-            setRole(toCopy.role);
             setCentre(toCopy.centre);
             setTags(toCopy.tags);
         }
@@ -244,14 +238,6 @@ public class EditCommand extends Command {
 
         public Optional<Address> getAddress() {
             return Optional.ofNullable(address);
-        }
-
-        public void setRole(String role) {
-            this.role = role;
-        }
-
-        private Optional<String> getRole() {
-            return Optional.ofNullable(role);
         }
 
         public void setCentre(Centre centre) {
