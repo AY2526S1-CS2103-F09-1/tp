@@ -116,7 +116,7 @@ Format: `match m/MENTOR_INDEX s/STUDENT_INDEX`
 
 Examples:
 * `match m/1 s/2` matches the mentor at the first index and the student at the second index.
-  ![result for 'match m/1 s/2'](images/matchJohnJaneResult.png)
+  ![result for 'match m/1 s/2'](images/matchRachelDavidResult.png)
 
 ### Unmatching a mentor and a student: `unmatch`
 
@@ -230,10 +230,11 @@ Finds persons by role.
 ### Listing unmatched students and mentors in a centre: `listunmatched`
 
 * `listunmatched Bedok` will return all unmatched `Students` and `Mentors` that have `Bedok` in the `Centre` field.
-    * Eg: `Bedok Place`, `Bedok Centre`, `Bedok Tuition` are all valid `Centre` locations
+    * Eg: `Bedok Green Secondary School` and `Bedok Centre`are valid `Centre` locations
       ![result for 'listunmatched Bedok'](images/listunmatchedBedok.png)
+
 * `listunmatched Bedok Centre` will return all unmatched `Students` and `Mentors` that have `Bedok Centre` in the `Centre` field.
-    * Eg: `Bedok Place` and `Bedok Tuition` are no longer valid. But `Bedok Centre` and `Bedok Centre Tuition` are now valid.
+    * Eg: `Bedok Green Secondary School` is no longer valid. But `Bedok Centre` is still valid.
       ![result for 'listunmatched Bedok Centre'](images/listunmatchedBedokCentre.png)
 
 ### Listing students of a mentor: `showstudent`
