@@ -185,16 +185,6 @@ Examples:
 
 ### Locating persons by address: `findbyaddress`
 
-  Find persons whose address matches any of the keywords.
-
-  Format: `findbyaddress KEYWORD`
-
-  * The keyword is a substring of the result so it does not have to be the whole address for easier searching. eg `Cle` is a substring of    `Clementi Ave 2`
-
-  Examples:
-  
-  * `findbyaddress Clementi Ave 2`
-
 ### Locating persons by centre: `findbycentre`
 
 Finds persons whose centre matches any of the keywords.
