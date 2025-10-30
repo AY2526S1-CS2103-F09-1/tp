@@ -75,7 +75,7 @@ Format: `help`
 
 ### Adding a person: `add`
 
-Adds a person to the address book. 
+Adds a person to the address book.
 
 A person **must have a role** that is either student or mentor. This is specified using the parameter `r/` as either `r/Student` or `r/Mentor`.
 
@@ -195,7 +195,7 @@ Finds persons whose centre matches any of the keywords.
   * Contacts that do not have a centre assigned yet will have their field as `Centre Unassigned`. Thus, any substring of that, will list the said person
 
   Examples:
-  
+
   * `findbycentre Nan Hua High School`
 
 ### Locating persons by role: `findbyrole`
@@ -208,7 +208,7 @@ Finds persons by role.
   * Case-sensitive. `MENTOR` is not the same as `Mentor` and thus would not work
 
   Examples:
-  
+
   * `findbyrole Mentor`
   * `findbyrole Student`
 
