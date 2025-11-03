@@ -13,7 +13,9 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Mentor;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Student;
 
 /**
  * Adds a person to the address book.
@@ -63,7 +65,17 @@ public class AddCommand extends Command {
         }
 
         model.addPerson(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+        String base = Messages.format(toAdd);
+        String extra;
+        if (toAdd instanceof Student s) {
+            extra = String.format("; Role: Student; Centre: %s", s.getCentre().value);
+        } else if (toAdd instanceof Mentor m) {
+            extra = String.format("; Role: Mentor; Centre: %s", m.getCentre().value);
+        } else {
+            extra = "";
+        }
+
+        return new CommandResult(String.format(MESSAGE_SUCCESS, base + extra));
     }
 
     @Override

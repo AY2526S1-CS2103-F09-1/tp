@@ -412,7 +412,8 @@ Use case ends
 * **Tutor**: A student volunteer from a participating institution
 * **Tutee**: A student from the beneficiary that is receiving the help from the tutor
 * **Mentor**: Another word often used to refer to a Tutor
-* **Student** Another word often used to refer to a Tutee
+* **Student**: Another word often used to refer to a Tutee
+* **Centre**: The location a student or mentor attends for sessions
 * **Donor**: An organisation or individual that helps fund the NGO
 * **Access Level**: The degree of permission a user has to update the system
 * **NGO**: Abbreviation for non-government organisations
