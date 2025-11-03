@@ -152,7 +152,7 @@ Examples:
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [c/CENTRE] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [c/CENTRE] [t/TAG]…​`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -267,7 +267,7 @@ Format `remark INDEX rm/REMARK`
 * Index must be a valid positive integer in the list.
 * Remarks are not edited through the `edit` command, if you want to edit a remark, use the `remark` command again.
 * Remarks are optional. If a person does not have any remark, it does not show up as an attribute in the address book.
-* To delete a remark, use `remark INDEX /rm`.
+* To delete a remark, use `remark INDEX rm/`.
 
 Examples:
 * `remark 3 rm/only free on Friday`
@@ -322,7 +322,7 @@ Action | Format, Examples
 **List** | `list`
 **Clear** | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [r/ROLE] [c/CENTRE] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [c/CENTRE] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Match** | `match m/INDEX s/INDEX` <br> e.g., `match m/2 s/3`
 **Unmatch** | `unmatch m/INDEX s/INDEX` <br> e.g., `unmatch m/2 s/3`
 **Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]...`<br> e.g., `find James Jake`
