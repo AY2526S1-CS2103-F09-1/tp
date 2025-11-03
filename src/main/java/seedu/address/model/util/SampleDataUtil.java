@@ -26,17 +26,17 @@ public class SampleDataUtil {
         Mentor rachelGoh = new Mentor(new Name("Rachel Goh"), new Phone("91234567"),
                 new Email("rachel.goh@example.com"),
                 new Address("Blk 145 Toa Payoh Lorong 2 #05-18"), new Remark(""),
-                getTagSet(), new Centre("Ang Mo Kio Secondary School"));
+                getTagSet(), new Centre("ANG MO KIO SECONDARY SCHOOL"));
 
         Mentor davidNg = new Mentor(new Name("David Ng"), new Phone("96543210"),
                 new Email("davidng@example.com"),
                 new Address("Blk 32 Marine Parade Road #12-44"), new Remark(""),
-                getTagSet("weekends"), new Centre("Bedok Primary School"));
+                getTagSet("weekends"), new Centre("BEDOK PRIMARY SCHOOL"));
 
         Student priyaDevi = new Student(new Name("Priya Devi"), new Phone("87654321"),
                 new Email("priya.devi@example.com"),
                 new Address("Blk 501 Bishan Street 11 #03-25"), new Remark(""),
-                getTagSet("Wednesday"), new Centre("Yishun Secondary School"));
+                getTagSet("Wednesday"), new Centre("YISHUN SECONDARY SCHOOL"));
         return new Person[] {
             rachelGoh, davidNg, priyaDevi
         };
