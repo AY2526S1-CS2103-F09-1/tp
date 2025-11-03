@@ -212,7 +212,7 @@ Finds persons whose centre name contains the entire keyword.
   Format: `findbycentre KEYWORD`
 
   * Similar to `findbyaddress`, entries with a centre name containing `KEYWORD` as a substring will be returned.
-  * Contacts that do not have a centre assigned yet will have their field as `Centre Unassigned`. Thus, the said person will be listed if `KEYWORD` contains any substring of `"Centre Unassigned"`.
+  * Contacts that do not have a centre assigned yet will have their field as `Centre Unassigned`. Thus, they will not be able to be found through this command
 
   Examples:
 
