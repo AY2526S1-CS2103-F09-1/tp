@@ -88,6 +88,9 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/ROLE [c/CENTRE] [t/TAG]â€
 A person can have any number of tags (including 0)
 </div>
 
+Note:
+A person's name will automatically have the first letter of each word be capitalised and the rest of the letters set to lower case regardless of the user input. 
+
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Mentor`
 * `add n/Betsy Crowe t/Friday e/betsycrowe@example.com c/New Town Secondary School a/Blk 69 Newgate Road #4-20 p/94248390 r/Student`
