@@ -534,3 +534,6 @@ testers are expected to do more *exploratory* testing.
 
 ### Warning messages for deletion of Mentors or Students
 * **No warning message is given when users delete a Mentor or Student from Mentorface.** Currently, no warnings are given when a user deletes a mentor or student. If a mentor has many matched students and is deleted by mistake, this can be frustrating for the user to have to add the Mentor again and redo the matching. We plan to show an error message each time the user wants to delete a mentor or student to ensure deletion was purposeful.
+
+### Having multiple remarks at a time
+* **It is currently not possible for the mentor or student to have multiple remarks.** Currently, users can only store one remark for each mentor or student. We plan to support adding multiple remarks in the future.

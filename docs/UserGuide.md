@@ -143,6 +143,7 @@ Format: `delete INDEX`
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * **IMPORTANT NOTE**: If the person deleted is either a mentor of a particular student or a student of a particular mentor, the mentor-student relationship between the two will be removed too.
+* There is no warning messages given before the deletion of a mentor. Be very sure before you delete a mentor.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
@@ -268,10 +269,13 @@ Format `remark INDEX rm/REMARK`
 * Index must be a valid positive integer in the list.
 * Remarks are not edited through the `edit` command, if you want to edit a remark, use the `remark` command again.
 * Remarks are optional. If a person does not have any remark, it does not show up as an attribute in the address book.
-* To delete a remark, use `remark INDEX rm/`.
+* To delete the remark, use `remark INDEX rm/`.
+* There is only one remark field. Unlike tags, the user cannot add multiple remarks to the same mentor or students.
+* If multiple remarks are added at once, the command picks the last remark that was typed.
 
 Examples:
-* `remark 3 rm/only free on Friday`
+* `remark 3 rm/only free on Friday`. Adds the remark `only free on Friday`.
+* `remark 3 rm/only free on Friday rm/good at maths`. Adds the remark `good at maths`.
 
 ### Exiting the program : `exit`
 
