@@ -5,7 +5,7 @@
     "email": "invalid@email!3e",
     "address": "4th street",
     "role" : "STUDENT",
-    "centre" : "Centre Unassigned",
+    "centre" : "CENTRE UNASSIGNED",
     "mentor" : ""
   } ]
 }

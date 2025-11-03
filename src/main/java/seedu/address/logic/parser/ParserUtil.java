@@ -126,7 +126,7 @@ public class ParserUtil {
      */
     public static Centre parseCentre(String centre) throws ParseException {
         requireNonNull(centre);
-        String trimmedCentre = centre.trim();
+        String trimmedCentre = centre.trim().toUpperCase();
         if (!Centre.isValidCentre(trimmedCentre)) {
             throw new ParseException(Centre.MESSAGE_CONSTRAINTS);
         }

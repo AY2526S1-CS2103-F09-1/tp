@@ -62,7 +62,7 @@ public class MatchCommand extends Command {
         Centre mentorCentre = ((Mentor) mentorToMatch).getCentre();
         Centre studentCentre = student.getCentre();
         if (mentorCentre.equals(studentCentre)) {
-            if (mentorCentre.value.equals("Centre Unassigned")) {
+            if (mentorCentre.value.equals("CENTRE UNASSIGNED")) {
                 throw new CommandException(Messages.MESSAGE_MATCHED_PERSONS_CENTRES_UNASSIGNED);
             }
             student.setMentor((Mentor) mentorToMatch);

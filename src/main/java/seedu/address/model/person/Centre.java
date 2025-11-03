@@ -19,7 +19,7 @@ public class Centre {
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
     /** Default text when no centre is allocated. */
-    public static final String DEFAULT_VALUE = "Centre Unassigned";
+    public static final String DEFAULT_VALUE = "CENTRE UNASSIGNED";
 
     /** Default instance used when a person has no assigned centre. */
     public static final Centre DEFAULT_CENTRE = new Centre(DEFAULT_VALUE);
