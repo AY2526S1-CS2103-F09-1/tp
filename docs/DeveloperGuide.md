@@ -526,8 +526,11 @@ testers are expected to do more *exploratory* testing.
 ### Adding two different people with the same name
 * **It is currently not possible to add two different people with the same name.** Currently, users would have to append a numerical suffix to differentiate them (e.g. `n/Lim Jun Jie 1` and `n/Lim Jun Jie 2`) and obtain their information later on using`findbyname Lim Jun Jie`. We plan to allow the user to add people with the same name by removing the duplicate name check and prompting them with a button should this situation occur, which they can click to agree to add the new person at their own risk.
 
+### Storing names with special characters
 * **It is currently not possible to include special characters in people's names**. Currently, users have to omit the part of the name containing the special character at their own discretion (e.g. Lim Jun Jie, Bala Krishnan) when adding them. We plan to allow some such characters to be part of a person's name, and enforce this using regex.
 
-* **Some prefixes like `rm/` do not get filtered out when they are embedded within other commands.** This means that "rm/" will appear as text in the respective field it is entered in. We plan to look into prohibiting users from using valid prefixes as part of each field they plan to enter.
+### Valid prefixes being included as part of other fields
+* **Some prefixes like `rm/` do not get filtered out when they are embedded within other commands.** Currently, prefixes "rm/" will appear as text in the respective field it is entered in. We plan to look into prohibiting users from using valid prefixes as part of each field they plan to enter.
 
-* **
+### Warning messages for deletion of Mentors or Students
+* **No warning message is given when users delete a Mentor or Student from Mentorface.** Currently, no warnings are given when a user deletes a mentor or student. If a mentor has many matched students and is deleted by mistake, this can be frustrating for the user to have to add the Mentor again and redo the matching. We plan to show an error message each time the user wants to delete a mentor or student to ensure deletion was purposeful.
