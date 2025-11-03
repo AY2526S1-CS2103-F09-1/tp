@@ -70,6 +70,20 @@ public class PersonBuilder {
         remark = personToCopy.getRemark();
         role = personToCopy.getRole();
         tags = new HashSet<>(personToCopy.getTags());
+
+        if (personToCopy instanceof Student s) {
+            role = STUDENT_ROLE;
+            centre = s.getCentre();
+            mentor = s.getMentor();
+        } else if (personToCopy instanceof Mentor m) {
+            role = MENTOR_ROLE;
+            centre = m.getCentre();
+            mentor = null;
+        } else {
+            role = DEFAULT_ROLE;
+            centre = null;
+            mentor = null;
+        }
     }
 
     /**
@@ -169,7 +183,20 @@ public class PersonBuilder {
      * Returns the {@code Person} object that we are building.
      */
     public Person build() {
-        return new Person(name, phone, email, address, remark, tags);
+        if (STUDENT_ROLE.equals(role)) {
+            Centre c = (centre != null) ? centre : new Centre(DEFAULT_CENTRE);
+            Student createdStudent = new Student(name, phone, email, address, remark, tags, c);
+            if (mentor != null && mentor.getCentre() != null && mentor.getCentre().equals(c)) {
+                createdStudent.setMentor(mentor);
+            }
+            return createdStudent;
+        } else if (MENTOR_ROLE.equals(role)) {
+            Centre c = (centre != null) ? centre : new Centre(DEFAULT_CENTRE);
+            return new Mentor(name, phone, email, address, remark, tags, c);
+        } else {
+            // PERSON: must not have centre/mentor
+            return new Person(name, phone, email, address, remark, tags);
+        }
     }
 
     /**
