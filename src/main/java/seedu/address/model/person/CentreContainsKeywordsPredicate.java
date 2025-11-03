@@ -8,6 +8,7 @@ import seedu.address.commons.util.ToStringBuilder;
  * Tests that a {@code Person}'s {@code Centre} matches any of the keywords given.
  */
 public class CentreContainsKeywordsPredicate implements Predicate<Person> {
+    private static final String UNASSIGNED = "centre unassigned";
     private final String keywords;
 
     public CentreContainsKeywordsPredicate(String keywords) {
@@ -17,8 +18,14 @@ public class CentreContainsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
         if (person instanceof Student student) {
+            if (student.getCentre().value.toLowerCase().equals(UNASSIGNED)) {
+                return false;
+            }
             return student.getCentre().value.toLowerCase().contains(keywords.toLowerCase());
         } else if (person instanceof Mentor mentor) {
+            if (mentor.getCentre().value.toLowerCase().equals(UNASSIGNED)) {
+                return false;
+            }
             return mentor.getCentre().value.toLowerCase().contains(keywords.toLowerCase());
         } else {
             return false;
