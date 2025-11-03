@@ -28,7 +28,7 @@ public class PersonBuilder {
     public static final String DEFAULT_ROLE = "Person";
     public static final String STUDENT_ROLE = "Student";
     public static final String MENTOR_ROLE = "Mentor";
-    public static final String DEFAULT_CENTRE = "Centre Unassigned";
+    public static final String DEFAULT_CENTRE = "CENTRE UNASSIGNED";
     public static final Mentor DEFAULT_ASSIGNED_MENTOR = new Mentor(new Name("Default Mentor"),
             new Phone(DEFAULT_PHONE), new Email(DEFAULT_EMAIL), new Address(DEFAULT_ADDRESS),
             new Remark(DEFAULT_REMARK), new HashSet<>(), new Centre(DEFAULT_CENTRE));
