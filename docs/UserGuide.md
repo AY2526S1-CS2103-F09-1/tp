@@ -80,7 +80,7 @@ Adds a person to the address book.
 
 A person **must have a role** that is either student or mentor. This is specified using the parameter `r/` as either `r/Student` or `r/Mentor`.
 
-A person can also have a centre assigned when added. This is specified using the parameter `c/`. If no centre is specified, the centre will take on the default value `Centre Unassigned`.
+A person can also have a centre assigned when added. This is specified using the parameter `c/`. If no centre is specified, the centre will take on the default value `CENTRE UNASSIGNED`. Note that centres are not distinguished by capitalisation, and are by default displayed in all caps.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/ROLE [c/CENTRE] [t/TAG]…​`
 
@@ -90,7 +90,7 @@ A person can have any number of tags (including 0)
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Mentor`
-* `add n/Betsy Crowe t/Friday e/betsycrowe@example.com c/New Town Secondary School a/Blk 69 Newgate Road #4-20 p/94248390 r/Student`
+* `add n/Betsy Crowe t/Friday e/betsycrowe@example.com c/New Town Secondary School a/Blk 69 Newgate Road #4-20 p/94248390 r/Student` In this case, the centre is displayed as `NEW TOWN PRIMARY SCHOOL`.
 
 ### Listing all persons : `list`
 
