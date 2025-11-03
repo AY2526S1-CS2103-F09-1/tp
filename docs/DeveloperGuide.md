@@ -474,7 +474,7 @@ testers are expected to do more *exploratory* testing.
 ### Editing a person
 
 1. Editing the centre of a natched mentor/student
-   
+
    1. Prerequisites: Mentor and student matched at same centre
 
    1. Note the matched mentor index
@@ -499,7 +499,7 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
 
 1. Deleting a matched mentor
-   
+
    1. Prerequisites: Mentor and student(s) matched at same centre
 
    1. Note the matched mentor index
@@ -517,7 +517,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `showstudent MENTOR_INDEX`<br>
       Expected: All students matched to the mentor displayed.
-   
+
    1. Other incorrect `showstudent` commands to try: `showstudent MENTOR_INDEX` where the person at`MENTOR_INDEX` is a student, `showstudent` multiple times (need to use `list` between them to regenerate the list of all persons)
 
 
