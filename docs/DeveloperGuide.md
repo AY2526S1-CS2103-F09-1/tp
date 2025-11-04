@@ -450,10 +450,10 @@ testers are expected to do more *exploratory* testing.
 1. Adding a person while all persons are being shown
 
    1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/Student`<br>
-      Expected: Student "John Doe" added with centre defaulting to "Centre Unassigned"
+      Expected: Student "John Doe" added with centre defaulting to "CENTRE UNASSIGNED"
 
    1. Test case: `add n/Jane Doe p/91233213 e/jane@example.com a/420 Clementi Street 5 r/Mentor c/Clementi Primary School`<br>
-      Expected: Mentor "Jane Doe" added with centre "Clementi Primary School"
+      Expected: Mentor "Jane Doe" added with centre "CLEMENTI PRIMARY SCHOOL"
 
    1. Test case: `add n/Sarah Lee p/91234567 e/sarah@example.com a/123 Main St r/MENTOR c/Bedok Centre t/Math t/Monday`<br>
       Expected: Person is not added as the role is invalid.
@@ -462,7 +462,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Matching a mentor and student
 
-   1. Prerequisites: One mentor and one student both at "Bedok Centre"
+   1. Prerequisites: One mentor and one student both at "BEDOK CENTRE"
 
    1. Note mentor index and student index
 
