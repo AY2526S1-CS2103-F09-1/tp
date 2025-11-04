@@ -78,15 +78,20 @@ Format: `help`
 
 Adds a person to the address book.
 
-A person **must have a role** that is either student or mentor. This is specified using the parameter `r/` as either `r/Student` or `r/Mentor`.
+* A person **must have a role** that is either student or mentor. This is specified using the parameter `r/` as either `r/Student` or `r/Mentor`.
 
 A person can also have a centre assigned when added. This is specified using the parameter `c/`. If no centre is specified, the centre will take on the default value `CENTRE UNASSIGNED`. Note that centres are not distinguished by capitalisation, and are by default displayed in all caps.
+
+* Phone numbers should only contain numbers and be at least 3 digits long.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/ROLE [c/CENTRE] [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
 </div>
+
+Note:
+A person's name will automatically have the first letter of each word be capitalised and the rest of the letters set to lower case regardless of the user input. 
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Mentor`
@@ -114,6 +119,8 @@ Format: `match m/MENTOR_INDEX s/STUDENT_INDEX`
 * A match can only be performed if the person at `MENTOR_INDEX` has the mentor role, and if the person at `STUDENT_INDEX` has the student role.
 * A match can only be performed between a mentor and student who are assigned to the same centre.
 * After matching, the student's mentor is displayed as a field in the app.
+* Persons with centre unassigned will not be able to be matched.
+* You cannot match a mentor that has already been assigned to the same student.
 
 Examples:
 * `match m/1 s/2` matches the mentor at the first index and the student at the second index.
@@ -234,6 +241,10 @@ Finds persons by role.
 
 ### Listing unmatched students and mentors in a centre: `listunmatched`
 
+Lists students and mentors who are  yet to be matched in a specific center.
+
+Format: `listunmatched KEYWORD`
+
 * `listunmatched Bedok` will return all unmatched `Students` and `Mentors` that have `Bedok` in the `Centre` field.
     * Eg: `Bedok Green Secondary School` and `Bedok Centre`are valid `Centre` locations
 
@@ -325,7 +336,7 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [c/CENTRE] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Match** | `match m/INDEX s/INDEX` <br> e.g., `match m/2 s/3`
 **Unmatch** | `unmatch m/INDEX s/INDEX` <br> e.g., `unmatch m/2 s/3`
-**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]...`<br> e.g., `find James Jake`
+**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]...`<br> e.g., `findbyname James Jake`
 **Find By Address** | `findbyaddress PART_OF_ADDRESS`<br> e.g., `findbyaddress Clementi`
 **Find By Centre** | `findbycentre PART_OF_CENTRE` <br> e.g., `findbycentre Nan Hua High School`
 **Find By Role** | `findbyrole ROLE` <br> e.g., `findbyrole Student`
