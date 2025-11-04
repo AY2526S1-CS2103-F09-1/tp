@@ -24,12 +24,12 @@ Mentorface is a **desktop app for managing personal details of mentors and stude
 
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/Student c/Bedok Centre t/friends t/owesMoney` : Adds a student named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/Student c/Bedok Centre t/weak in Math` : Adds a student named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -78,9 +78,13 @@ Format: `help`
 
 Adds a person to the address book.
 
+A person's name can only contain alphanumeric characters and spaces. Furthermore, if the user enters a valid name as input, the first letter of each word in the name will be capitalised, while the rest of the letters in each word will be in small leters. For example, if the names `n/cristiano ronaldo 7`, `CRISTIANO RONALDO 7`, and `Cristiano Ronaldo 7` will all be stored as `Cristiano Ronaldo 7`. Hence, adding people with the same name but with different letters capitalised will be considered as adding duplicate people.
+
+A person's phone number can only consist of digits, and must be at least 3 digits long.
+
 A person **must have a role** that is either student or mentor. This is specified using the parameter `r/` as either `r/Student` or `r/Mentor`.
 
-A person can also have a centre assigned when added. This is specified using the parameter `c/`. If no centre is specified, the centre will take on the default value `Centre Unassigned`.
+A person can also have a centre assigned when added. This is specified using the parameter `c/`. If no centre is specified, the centre will take on the default value `CENTRE UNASSIGNED`. All centre names are stored and displayed in all caps. For example, no matter whether the center is given as `c/Raffles Institution`, `c/raffles institution`, or `c/rAfFlEs iNsTiTuTiOn`, in all cases these will be treated as the same centre `RAFFLES INSTITUTION`.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/ROLE [c/CENTRE] [t/TAG]…​`
 
@@ -147,7 +151,7 @@ Format: `delete INDEX`
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `findbyname Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `findbyname Betsy` followed by `delete 1` deletes the 1st person in the results of the `findbyname` command.
 
 ### Editing a person : `edit`
 
@@ -213,8 +217,9 @@ Finds persons whose centre name contains the entire keyword.
 
   Format: `findbycentre KEYWORD`
 
+  * The search is case-insensitive. For example, since the centre names are in all caps, `findbycentre Jurong`, `findbycentre jurong`, and `findbycentre jUronG` will all return `JURONG PRIMARY SCHOOL`.
   * Similar to `findbyaddress`, entries with a centre name containing `KEYWORD` as a substring will be returned.
-  * Contacts that do not have a centre assigned yet will have their field as `Centre Unassigned`. Thus, they will not be able to be found through this command
+  * Contacts that do not have a centre assigned yet will have their field as `CENTER UNASSIGNED`. Thus, they will not be able to be found through this command.
 
   Examples:
 
@@ -292,8 +297,8 @@ AddressBook data are saved in the hard disk automatically after any command that
 AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+If your changes to the data file makes its format invalid, Mentorface will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the Mentorface to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
 ### Archiving data files `[coming in v2.0]`
