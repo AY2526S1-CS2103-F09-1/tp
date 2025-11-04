@@ -162,7 +162,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [c/CENTRE] [
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
     specifying any tags after it.
-* If you wish to remove a Mentor or a Student from a Centre. You can do `edit [INDEX] c/centre_unassigned` to set the Centre field to `CENTRE_UNASSIGNED`.
+* If you wish to remove a Mentor or a Student from a Centre. You can do `edit [INDEX] c/centre unassigned` to set the Centre field to `CENTRE UNASSIGNED`.
 * **IMPORTANT NOTE**: If a mentor and a student are matched to each other and you edit the centre of either of them, they will automatically be unmatched.
 
 Examples:
