@@ -55,7 +55,18 @@ public class ParserUtil {
         if (!Name.isValidName(trimmedName)) {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
-        return new Name(trimmedName);
+
+        StringBuilder finalName = new StringBuilder();
+        String[] splitName = trimmedName.split(" ");
+        for (String word : splitName) {
+            if (!word.isEmpty()) {
+                finalName.append(word.substring(0, 1).toUpperCase())
+                        .append(word.substring(1).toLowerCase())
+                        .append(" ");
+            }
+        }
+
+        return new Name(finalName.toString().trim());
     }
 
     /**
@@ -126,7 +137,7 @@ public class ParserUtil {
      */
     public static Centre parseCentre(String centre) throws ParseException {
         requireNonNull(centre);
-        String trimmedCentre = centre.trim();
+        String trimmedCentre = centre.trim().toUpperCase();
         if (!Centre.isValidCentre(trimmedCentre)) {
             throw new ParseException(Centre.MESSAGE_CONSTRAINTS);
         }

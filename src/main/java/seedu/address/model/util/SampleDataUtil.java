@@ -23,23 +23,22 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
     public static final Remark EMPTY_REMARK = new Remark("");
     public static Person[] getSamplePersons() {
-        Mentor alice = new Mentor(new Name("Alice Pauline"), new Phone("94351253"), new Email("alice@example.com"),
-                new Address("123, Jurong West Ave 6, #08-111"), new Remark("She likes aardvarks."),
-                getTagSet("friends"), new Centre("Nan Hua High School"));
+        Mentor rachelGoh = new Mentor(new Name("Rachel Goh"), new Phone("91234567"),
+                new Email("rachel.goh@example.com"),
+                new Address("Blk 145 Toa Payoh Lorong 2 #05-18"), new Remark(""),
+                getTagSet(), new Centre("ANG MO KIO SECONDARY SCHOOL"));
 
-        Student benson = new Student(new Name("Benson Meier"), new Phone("98765432"), new Email("bensonM@example.com"),
-                new Address("311, Clementi Ave 2, #02-25"), new Remark("He can't take beer!"),
-                getTagSet("colleagues", "friends"), new Centre("Nan Hua High School"));
-        benson.setMentor(alice);
+        Mentor davidNg = new Mentor(new Name("David Ng"), new Phone("96543210"),
+                new Email("davidng@example.com"),
+                new Address("Blk 32 Marine Parade Road #12-44"), new Remark(""),
+                getTagSet("weekends"), new Centre("BEDOK PRIMARY SCHOOL"));
 
-        Mentor carl = new Mentor(new Name("Carl Kurz"), new Phone("95352563"), new Email("heinz@example.com"),
-                new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), EMPTY_REMARK,
-                getTagSet("neighbours"), new Centre("New Town Primary School"));
-
+        Student priyaDevi = new Student(new Name("Priya Devi"), new Phone("87654321"),
+                new Email("priya.devi@example.com"),
+                new Address("Blk 501 Bishan Street 11 #03-25"), new Remark(""),
+                getTagSet("Wednesday"), new Centre("YISHUN SECONDARY SCHOOL"));
         return new Person[] {
-            alice,
-            benson,
-            carl
+            rachelGoh, davidNg, priyaDevi
         };
     }
 

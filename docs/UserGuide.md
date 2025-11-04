@@ -92,9 +92,12 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/ROLE [c/CENTRE] [t/TAG]â€
 A person can have any number of tags (including 0)
 </div>
 
+Note:
+A person's name will automatically have the first letter of each word be capitalised and the rest of the letters set to lower case regardless of the user input. 
+
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 r/Mentor`
-* `add n/Betsy Crowe t/Friday e/betsycrowe@example.com c/New Town Secondary School a/Blk 69 Newgate Road #4-20 p/94248390 r/Student`
+* `add n/Betsy Crowe t/Friday e/betsycrowe@example.com c/New Town Secondary School a/Blk 69 Newgate Road #4-20 p/94248390 r/Student` In this case, the centre is displayed as `NEW TOWN PRIMARY SCHOOL`.
 
 ### Listing all persons : `list`
 
@@ -118,6 +121,8 @@ Format: `match m/MENTOR_INDEX s/STUDENT_INDEX`
 * A match can only be performed if the person at `MENTOR_INDEX` has the mentor role, and if the person at `STUDENT_INDEX` has the student role.
 * A match can only be performed between a mentor and student who are assigned to the same centre.
 * After matching, the student's mentor is displayed as a field in the app.
+* Persons with centre unassigned will not be able to be matched.
+* You cannot match a mentor that has already been assigned to the same student.
 
 Examples:
 * `match m/1 s/2` matches the mentor at the first index and the student at the second index.
@@ -240,6 +245,10 @@ Finds persons by role.
   * `findbyrole Student`
 
 ### Listing unmatched students and mentors in a centre: `listunmatched`
+
+Lists students and mentors who are  yet to be matched in a specific center.
+
+Format: `listunmatched KEYWORD`
 
 * `listunmatched Bedok` will return all unmatched `Students` and `Mentors` that have `Bedok` in the `Centre` field.
     * Eg: `Bedok Green Secondary School` and `Bedok Centre`are valid `Centre` locations

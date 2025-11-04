@@ -6,7 +6,7 @@
     "address": "123, Jurong West Ave 6, #08-111",
     "remark" : "",
     "role" : "Student",
-    "centre" : "Centre Unassigned",
+    "centre" : "CENTRE UNASSIGNED",
     "mentor" : "",
     "tags": [ "friends" ]
   }, {
@@ -16,7 +16,7 @@
     "address": "4th street",
     "remark" : "",
     "role" : "Student",
-    "centre" : "Centre Unassigned",
+    "centre" : "CENTRE UNASSIGNED",
     "mentor" : ""
   } ]
 }
