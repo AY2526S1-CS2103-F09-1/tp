@@ -15,7 +15,7 @@ Mentorface is a **desktop app for managing personal details of mentors and stude
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103-F09-1/tp/releases/tag/v1.5).
+1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103-F09-1/tp/releases/tag/v1.6).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your app.
 
@@ -78,7 +78,7 @@ Format: `help`
 
 Adds a person to the address book.
 
-A person's name can only contain alphanumeric characters and spaces. Furthermore, if the user enters a valid name as input, the first letter of each word in the name will be capitalised, while the rest of the letters in each word will be in small leters. For example, if the names `n/cristiano ronaldo 7`, `CRISTIANO RONALDO 7`, and `Cristiano Ronaldo 7` will all be stored as `Cristiano Ronaldo 7`. Hence, adding people with the same name but with different letters capitalised will be considered as adding duplicate people.
+A person's name can only contain alphanumeric characters and spaces. Furthermore, if the user enters a valid name as input, the first letter of each word in the name will be capitalised, while the rest of the letters in each word will be in small leters. For example, if the names `n/cristiano ronaldo 7`, `n/CRISTIANO RONALDO 7`, and `n/Cristiano Ronaldo 7` will all be stored as `Cristiano Ronaldo 7`. Hence, adding people with the same name but with different letters capitalised will be considered as adding duplicate people.
 
 A person's phone number can only consist of digits, and must be at least 3 digits long.
 
@@ -104,7 +104,7 @@ Format: `list`
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from the address book. **PLEASE BE VERY CAREFUL BEFORE DOING THIS, AS THIS ACTION IS IRREVERSIBLE!**
 
 Format: `clear`
 
@@ -335,7 +335,7 @@ Action | Format, Examples
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [c/CENTRE] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Match** | `match m/INDEX s/INDEX` <br> e.g., `match m/2 s/3`
 **Unmatch** | `unmatch m/INDEX s/INDEX` <br> e.g., `unmatch m/2 s/3`
-**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]...`<br> e.g., `find James Jake`
+**Find By Name** | `findbyname KEYWORD [MORE_KEYWORDS]...`<br> e.g., `findbyname James Jake`
 **Find By Address** | `findbyaddress PART_OF_ADDRESS`<br> e.g., `findbyaddress Clementi`
 **Find By Centre** | `findbycentre PART_OF_CENTRE` <br> e.g., `findbycentre Nan Hua High School`
 **Find By Role** | `findbyrole ROLE` <br> e.g., `findbyrole Student`
