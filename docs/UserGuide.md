@@ -15,7 +15,7 @@ Mentorface is a **desktop app for managing personal details of mentors and stude
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103-F09-1/tp/releases/tag/v1.5).
+1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103-F09-1/tp/releases/tag/v1.6).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your app.
 
@@ -24,12 +24,12 @@ Mentorface is a **desktop app for managing personal details of mentors and stude
 
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1. Type the command in the command box and press Enter to execute it. e.g. typing `help` and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/Student c/Bedok Centre t/friends t/owesMoney` : Adds a student named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/Student c/Bedok Centre t/weak in Math` : Adds a student named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -78,11 +78,13 @@ Format: `help`
 
 Adds a person to the address book.
 
-* A person **must have a role** that is either student or mentor. This is specified using the parameter `r/` as either `r/Student` or `r/Mentor`.
+A person's name can only contain alphanumeric characters and spaces. Furthermore, if the user enters a valid name as input, the first letter of each word in the name will be capitalised, while the rest of the letters in each word will be in small leters. For example, if the names `n/cristiano ronaldo 7`, `n/CRISTIANO RONALDO 7`, and `n/Cristiano Ronaldo 7` will all be stored as `Cristiano Ronaldo 7`. Hence, adding people with the same name but with different letters capitalised will be considered as adding duplicate people.
 
-A person can also have a centre assigned when added. This is specified using the parameter `c/`. If no centre is specified, the centre will take on the default value `CENTRE UNASSIGNED`. Note that centres are not distinguished by capitalisation, and are by default displayed in all caps.
+A person's phone number can only consist of digits, and must be at least 3 digits long.
 
-* Phone numbers should only contain numbers and be at least 3 digits long.
+A person **must have a role** that is either student or mentor. This is specified using the parameter `r/` as either `r/Student` or `r/Mentor`.
+
+A person can also have a centre assigned when added. This is specified using the parameter `c/`. If no centre is specified, the centre will take on the default value `CENTRE UNASSIGNED`. All centre names are stored and displayed in all caps. For example, no matter whether the center is given as `c/Raffles Institution`, `c/raffles institution`, or `c/rAfFlEs iNsTiTuTiOn`, in all cases these will be treated as the same centre `RAFFLES INSTITUTION`.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS r/ROLE [c/CENTRE] [t/TAG]…​`
 
@@ -105,7 +107,7 @@ Format: `list`
 
 ### Clearing all entries : `clear`
 
-Clears all entries from the address book.
+Clears all entries from the address book. **PLEASE BE VERY CAREFUL BEFORE DOING THIS, AS THIS ACTION IS IRREVERSIBLE!**
 
 Format: `clear`
 
@@ -150,10 +152,11 @@ Format: `delete INDEX`
 * The index refers to the index number shown in the displayed person list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * **IMPORTANT NOTE**: If the person deleted is either a mentor of a particular student or a student of a particular mentor, the mentor-student relationship between the two will be removed too.
+* There is no warning messages given before the deletion of a mentor. Be very sure before you delete a mentor.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `findbyname Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `findbyname Betsy` followed by `delete 1` deletes the 1st person in the results of the `findbyname` command.
 
 ### Editing a person : `edit`
 
@@ -168,6 +171,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [c/CENTRE] [
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
     specifying any tags after it.
+* If you wish to remove a Mentor or a Student from a Centre. You can do `edit [INDEX] c/centre unassigned` to set the Centre field to `CENTRE UNASSIGNED`.
 * **IMPORTANT NOTE**: If a mentor and a student are matched to each other and you edit the centre of either of them, they will automatically be unmatched.
 
 Examples:
@@ -218,8 +222,9 @@ Finds persons whose centre name contains the entire keyword.
 
   Format: `findbycentre KEYWORD`
 
+  * The search is case-insensitive. For example, since the centre names are in all caps, `findbycentre Jurong`, `findbycentre jurong`, and `findbycentre jUronG` will all return `JURONG PRIMARY SCHOOL`.
   * Similar to `findbyaddress`, entries with a centre name containing `KEYWORD` as a substring will be returned.
-  * Contacts that do not have a centre assigned yet will have their field as `Centre Unassigned`. Thus, they will not be able to be found through this command
+  * Contacts that do not have a centre assigned yet will have their field as `CENTER UNASSIGNED`. Thus, they will not be able to be found through this command.
 
   Examples:
 
@@ -278,10 +283,13 @@ Format `remark INDEX rm/REMARK`
 * Index must be a valid positive integer in the list.
 * Remarks are not edited through the `edit` command, if you want to edit a remark, use the `remark` command again.
 * Remarks are optional. If a person does not have any remark, it does not show up as an attribute in the address book.
-* To delete a remark, use `remark INDEX rm/`.
+* To delete the remark, use `remark INDEX rm/`.
+* There is only one remark field. Unlike tags, the user cannot add multiple remarks to the same mentor or students.
+* If multiple remarks are added at once, the command picks the last remark that was typed.
 
 Examples:
-* `remark 3 rm/only free on Friday`
+* `remark 3 rm/only free on Friday`. Adds the remark `only free on Friday`.
+* `remark 3 rm/only free on Friday rm/good at maths`. Adds the remark `good at maths`.
 
 ### Exiting the program : `exit`
 
@@ -298,8 +306,8 @@ AddressBook data are saved in the hard disk automatically after any command that
 AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+If your changes to the data file makes its format invalid, Mentorface will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the Mentorface to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
 ### Archiving data files `[coming in v2.0]`

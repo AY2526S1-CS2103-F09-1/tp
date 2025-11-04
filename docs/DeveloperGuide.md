@@ -36,7 +36,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2526S1-CS2103-F09-1/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2526S1-CS2103-F09-1/tp/blob/master/src/main/java/seedu/address/Main.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -68,7 +68,7 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2526S1-CS2103-F09-1/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -85,7 +85,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2526S1-CS2103-F09-1/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -115,7 +115,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2526S1-CS2103-F09-1/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 <img src="images/ModelClassDiagram.png" width="450" />
 
@@ -136,7 +136,7 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2526S1-CS2103-F09-1/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 <img src="images/StorageClassDiagram.png" width="550" />
 
@@ -474,7 +474,7 @@ testers are expected to do more *exploratory* testing.
 ### Editing a person
 
 1. Editing the centre of a natched mentor/student
-   
+
    1. Prerequisites: Mentor and student matched at same centre
 
    1. Note the matched mentor index
@@ -499,7 +499,7 @@ testers are expected to do more *exploratory* testing.
       Expected: Similar to previous.
 
 1. Deleting a matched mentor
-   
+
    1. Prerequisites: Mentor and student(s) matched at same centre
 
    1. Note the matched mentor index
@@ -517,7 +517,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `showstudent MENTOR_INDEX`<br>
       Expected: All students matched to the mentor displayed.
-   
+
    1. Other incorrect `showstudent` commands to try: `showstudent MENTOR_INDEX` where the person at`MENTOR_INDEX` is a student, `showstudent` multiple times (need to use `list` between them to regenerate the list of all persons)
 
 
@@ -526,4 +526,14 @@ testers are expected to do more *exploratory* testing.
 ### Adding two different people with the same name
 * **It is currently not possible to add two different people with the same name.** Currently, users would have to append a numerical suffix to differentiate them (e.g. `n/Lim Jun Jie 1` and `n/Lim Jun Jie 2`) and obtain their information later on using`findbyname Lim Jun Jie`. We plan to allow the user to add people with the same name by removing the duplicate name check and prompting them with a button should this situation occur, which they can click to agree to add the new person at their own risk.
 
+### Storing names with special characters
 * **It is currently not possible to include special characters in people's names**. Currently, users have to omit the part of the name containing the special character at their own discretion (e.g. Lim Jun Jie, Bala Krishnan) when adding them. We plan to allow some such characters to be part of a person's name, and enforce this using regex.
+
+### Valid prefixes being included as part of other fields
+* **Some prefixes like `rm/` do not get filtered out when they are embedded within other commands.** Currently, prefixes "rm/" will appear as text in the respective field it is entered in. We plan to look into prohibiting users from using valid prefixes as part of each field they plan to enter.
+
+### Warning messages for deletion of Mentors or Students
+* **No warning message is given when users delete a Mentor or Student from Mentorface.** Currently, no warnings are given when a user deletes a mentor or student. If a mentor has many matched students and is deleted by mistake, this can be frustrating for the user to have to add the Mentor again and redo the matching. We plan to show an error message each time the user wants to delete a mentor or student to ensure deletion was purposeful.
+
+### Having multiple remarks at a time
+* **It is currently not possible for the mentor or student to have multiple remarks.** Currently, users can only store one remark for each mentor or student. We plan to support adding multiple remarks in the future.
